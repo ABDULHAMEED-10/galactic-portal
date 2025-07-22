@@ -48,8 +48,8 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
     MTMSPOT: "/logos/MTM spot.jpeg",
     MMV: "/logos/MMV image.jpeg",
     "Humble Barn": "/logos/humble baron.jpeg",
-    Marrakesh: "🏛️", // No Marrakesh image available
-    "Host Hotel": "🏨", // No Host Hotel image available
+    Marrakesh: "🏛️", // Keeping original since we're handling image separately
+    "Host Hotel": "🏨",
     "Lune Lite": "/logos/Luna Lite.png",
   }
 
@@ -481,7 +481,38 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
               <>
                 {/* Public Content */}
                 <div className="prose prose-invert max-w-none">
-                  <p className="text-white/80 text-lg leading-relaxed">{node.content}</p>
+                  {/* For Marrakesh node, display image and text side by side */}
+                  {node.title === "Marrakesh" && (
+                    <div className="mb-6 flex flex-col md:flex-row gap-6">
+                      <img 
+                        src="/images/Marrakesh.png" 
+                        alt="Marrakesh" 
+                        className="w-full md:w-1/2 h-auto rounded-lg object-cover"
+                      />
+                      <div className="w-full md:w-1/2">
+                        <p className="text-white/80 text-lg leading-relaxed">{node.content}</p>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* For MMV node, display image and text side by side */}
+                  {node.title === "MMV" && (
+                    <div className="mb-6 flex flex-col md:flex-row gap-6">
+                      <img 
+                        src="/images/MVM.png" 
+                        alt="MMV" 
+                        className="w-full md:w-1/2 h-auto rounded-lg object-cover"
+                      />
+                      <div className="w-full md:w-1/2">
+                        <p className="text-white/80 text-lg leading-relaxed">{node.content}</p>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* For all other nodes, just show text */}
+                  {node.title !== "Marrakesh" && node.title !== "MMV" && (
+                    <p className="text-white/80 text-lg leading-relaxed">{node.content}</p>
+                  )}
                 </div>
               </>
             )}
