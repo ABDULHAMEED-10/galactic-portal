@@ -25,7 +25,7 @@ export default function IntroScene({ onEnterPortal }: IntroSceneProps) {
         playsInline
         onEnded={onEnterPortal}
       >
-        <source src="/videos/video1.mp4" type="video/mp4" />
+        <source src="https://2qajpnkiaommrazx.public.blob.vercel-storage.com/video1.mp4" type="video/mp4" />
       </video>
 
       {/* Overlay gradient */}
