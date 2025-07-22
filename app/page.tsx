@@ -15,8 +15,8 @@ export default function GalacticPortal() {
       const video1 = document.createElement("video")
       const video2 = document.createElement("video")
 
-      video1.src = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/video%201-dFE3MM6DU6hsqHvRp5bKq3AB28YGQn.mp4"
-      video2.src = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/video%202-aJtrYUSxLFHVscv7hPfFdZfMlO8PpB.mp4"
+      video1.src = "/videos/Video 1.mp4"
+      video2.src = "/videos/Video 2.mp4"
 
       await Promise.all([
         new Promise((resolve) => {
