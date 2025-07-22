@@ -50,7 +50,8 @@ export default function GalacticPortal() {
             <circle cx="32" cy="32" r="28" stroke="#38bdf8" strokeWidth="4" opacity="0.3" />
             <circle cx="32" cy="32" r="18" stroke="#facc15" strokeWidth="2" opacity="0.5" />
             <circle cx="32" cy="32" r="6" fill="#fff" />
-            <path d="M32 10 L36 24 L50 24 L38 32 L42 46 L32 38 L22 46 L26 32 L14 24 L28 24 Z" fill="#fbbf24" opacity="0.8" />
+            {/* Centered star at (32,32) */}
+            <path d="M32 20 L35.09 28.26 L44 29.27 L37 35.18 L38.18 44 L32 39.77 L25.82 44 L27 35.18 L20 29.27 L28.91 28.26 Z" fill="#fbbf24" opacity="0.8" />
           </svg>
         </div>
         <style jsx>{`
