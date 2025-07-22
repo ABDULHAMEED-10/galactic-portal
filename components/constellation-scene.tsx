@@ -235,7 +235,7 @@ export default function ConstellationScene() {
     <div className="relative w-full h-full">
       {/* Background video */}
       <video ref={videoRef} className="w-full h-full object-cover" autoPlay loop muted playsInline>
-        <source src="/videos/Video 2.mp4" type="video/mp4" />
+        <source src="/videos/video2.mp4" type="video/mp4" />
       </video>
 
       {/* Overlay for better contrast */}
