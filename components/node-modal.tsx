@@ -32,19 +32,25 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
   }
 
   const partnerLogos: { [key: string]: string } = {
-    Ebony: "📰",
-    Verizon: "📱",
-    UBIGI: "🌐",
-    Pandora: "🎵",
-    "Gibson Guitars": "🎸",
-    "Travel Noir": "✈️",
-    "Glory Foods": "🍽️",
-    "TOTE & CARRY": "👜",
-    Phillips: "🔊",
-    Honda: "🚗",
-    NFOH: "📺",
-    "Rixon Agency": "🎯",
-    AIX: "🤖",
+    Ebony: "/logos/ebony.jpeg",
+    Verizon: "/logos/verizon.jpeg",
+    UBIGI: "/logos/ubigi.jpeg",
+    Pandora: "/logos/pandora.jpeg",
+    "Gibson Guitars": "/logos/gibson.jpeg",
+    "Travel Noir": "/logos/travel noir.jpeg",
+    "Glory Foods": "/logos/glory foods.jpeg",
+    "TOTE & CARRY": "/logos/tote & carry.jpeg",
+    Phillips: "/logos/philips.jpeg",
+    Honda: "/logos/honda.png",
+    NFOH: "/logos/NFOH.jpeg",
+    "Rixon Agency": "/logos/rixon.png",
+    AIX: "/logos/AIX.jpeg",
+    MTMSPOT: "/logos/MTM spot.jpeg",
+    MMV: "/logos/MMV image.jpeg",
+    "Humble Barn": "/logos/humble baron.jpeg",
+    Marrakesh: "🏛️", // No Marrakesh image available
+    "Host Hotel": "🏨", // No Host Hotel image available
+    "Lune Lite": "/logos/Luna Lite.png",
   }
 
   const partnerPerks: { [key: string]: string[] } = {
@@ -306,7 +312,17 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
             <div className="flex items-center space-x-4">
               {isLocked ? (
                 <>
-                  <div className="text-6xl">{partnerLogos[node.partner] || "🏢"}</div>
+                  <div className="text-6xl">
+                    {partnerLogos[node.partner]?.startsWith('/') ? (
+                      <img 
+                        src={partnerLogos[node.partner]} 
+                        alt={node.partner} 
+                        className="w-16 h-16 object-contain rounded-lg"
+                      />
+                    ) : (
+                      partnerLogos[node.partner] || "🏢"
+                    )}
+                  </div>
                   <div>
                     <h2 className="text-3xl font-light text-white mb-2">{node.partner}</h2>
                     <div className="flex items-center space-x-2">
@@ -317,7 +333,17 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
                 </>
               ) : (
                 <>
-                  <div className="text-6xl">{partnerLogos[node.title] || "⭐"}</div>
+                  <div className="text-6xl">
+                    {partnerLogos[node.title]?.startsWith('/') ? (
+                      <img 
+                        src={partnerLogos[node.title]} 
+                        alt={node.title} 
+                        className="w-16 h-16 object-contain rounded-lg"
+                      />
+                    ) : (
+                      partnerLogos[node.title] || "⭐"
+                    )}
+                  </div>
                   <div>
                     <h2 className="text-3xl font-light text-white mb-2">{node.title}</h2>
                     <div className="flex items-center space-x-2">
