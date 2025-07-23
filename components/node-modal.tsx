@@ -1,11 +1,8 @@
 "use client"
-
 import type React from "react"
-
 import { motion, AnimatePresence } from "framer-motion"
 import { X, Lock, Star, Building2, DollarSign, Users, Zap } from "lucide-react"
 import { useState } from "react"
-
 interface NodeModalProps {
   node: any
   onClose: () => void
