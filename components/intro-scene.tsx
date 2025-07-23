@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useEffect } from "react"
 import { motion } from "framer-motion"
 
 interface IntroSceneProps {
@@ -9,6 +9,26 @@ interface IntroSceneProps {
 
 export default function IntroScene({ onEnterPortal }: IntroSceneProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
+
+  // Safari video fallback: auto-enter after 5 seconds if video doesn't load
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      onEnterPortal();
+    }, 5000);
+    const video = videoRef.current;
+    const clear = () => clearTimeout(timeout);
+    if (video) {
+      video.addEventListener("loadeddata", clear);
+      video.addEventListener("canplay", clear);
+    }
+    return () => {
+      clearTimeout(timeout);
+      if (video) {
+        video.removeEventListener("loadeddata", clear);
+        video.removeEventListener("canplay", clear);
+      }
+    };
+  }, [onEnterPortal]);
 
   return (
     <motion.div

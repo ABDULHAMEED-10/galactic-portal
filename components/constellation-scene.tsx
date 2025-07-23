@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Star, Lock } from "lucide-react"
 import ConstellationNode from "./constellation-node"
@@ -230,11 +230,43 @@ const constellationNodes = [
 export default function ConstellationScene() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [selectedNode, setSelectedNode] = useState<any>(null)
+  const [videoReady, setVideoReady] = useState(false)
+
+  // Safari video fallback: auto-show constellation after 5 seconds if video doesn't load
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setVideoReady(true);
+    }, 5000);
+    const video = videoRef.current;
+    const clear = () => {
+      clearTimeout(timeout);
+      setVideoReady(true);
+    };
+    if (video) {
+      video.addEventListener("loadeddata", clear);
+      video.addEventListener("canplay", clear);
+    }
+    return () => {
+      clearTimeout(timeout);
+      if (video) {
+        video.removeEventListener("loadeddata", clear);
+        video.removeEventListener("canplay", clear);
+      }
+    };
+  }, []);
 
   return (
     <div className="relative w-full h-full">
       {/* Background video */}
-      <video ref={videoRef} className="w-full h-full object-cover" autoPlay loop muted playsInline>
+      <video
+        ref={videoRef}
+        className="w-full h-full object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{ opacity: videoReady ? 1 : 0, transition: 'opacity 0.5s' }}
+      >
         <source src="https://2qajpnkiaommrazx.public.blob.vercel-storage.com/video2.mp4" type="video/mp4" />
       </video>
 
