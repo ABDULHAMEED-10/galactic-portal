@@ -6,13 +6,13 @@ import { Star, Lock } from "lucide-react"
 import ConstellationNode from "./constellation-node"
 import NodeModal from "./node-modal"
 
-// Updated constellation nodes based on the provided mapping and PDF content
+// Updated constellation nodes optimized for both desktop and mobile
 const constellationNodes = [
-  // Node 1 - NFOH (Public)
+  // Node 1 - NFOH (Public) - center of parallelogram
   {
     id: 1,
-    x: 45,
-    y: 45,
+    x: 48,
+    y: 60,
     type: "unlocked",
     title: "NFOH",
     content:
@@ -20,22 +20,22 @@ const constellationNodes = [
     color: "cyan",
   },
 
-  // Node 2 - Verizon (Locked)
+  // Node 2 - Verizon (Locked) - bottom right
   {
     id: 2,
-    x: 50,
-    y: 85,
+    x: 38,
+    y: 88,
     type: "locked",
     partner: "Verizon",
     tier: "Technology Partner",
     color: "emerald",
   },
 
-  // Node 3 - MTMSPOT (Public)
+  // Node 3 - MTMSPOT (Public) - upper right
   {
     id: 3,
-    x: 85,
-    y: 35,
+    x: 80,
+    y: 30,
     type: "unlocked",
     title: "MTMSPOT",
     content:
@@ -43,32 +43,32 @@ const constellationNodes = [
     color: "purple",
   },
 
-  // Node 4 - Gibson Guitars (Locked)
+  // Node 4 - Gibson Guitars (Locked) - top of parallelogram
   {
     id: 4,
-    x: 55,
-    y: 55,
+    x: 58,
+    y: 48,
     type: "locked",
     partner: "Gibson Guitars",
     tier: "Instrument Partner",
     color: "amber",
   },
 
-  // Node 5 - Glory Foods (Locked)
+  // Node 5 - Glory Foods (Locked) - left of parallelogram
   {
     id: 5,
-    x: 40,
-    y: 50,
+    x: 38,
+    y: 52,
     type: "locked",
     partner: "Glory Foods",
     tier: "Lifestyle Partner",
     color: "orange",
   },
 
-  // Node 6 - AIX (Public)
+  // Node 6 - AIX (Public) - right of parallelogram
   {
     id: 6,
-    x: 50,
+    x: 48,
     y: 40,
     type: "unlocked",
     title: "AIX",
@@ -77,33 +77,33 @@ const constellationNodes = [
     color: "red",
   },
 
-  // Node 7 - Honda (Locked)
+  // Node 7 - Honda (Locked) - right of center
   {
     id: 7,
-    x: 70,
-    y: 50,
+    x: 68,
+    y: 45,
     type: "locked",
     partner: "Honda",
     tier: "Mobility Partner",
     color: "pink",
   },
 
-  // Node 8 - Pandora (Locked)
+  // Node 8 - Pandora (Locked) - right side, below 7
   {
     id: 8,
-    x: 65,
-    y: 65,
+    x: 72,
+    y: 55,
     type: "locked",
     partner: "Pandora",
     tier: "Streaming Partner",
     color: "slate",
   },
 
-  // Node 9 - MMV (Public)
+  // Node 9 - MMV (Public) - right side, below 8
   {
     id: 9,
-    x: 75,
-    y: 60,
+    x: 70,
+    y: 65,
     type: "unlocked",
     title: "MMV",
     content:
@@ -111,11 +111,11 @@ const constellationNodes = [
     color: "lime",
   },
 
-  // Node 10 - Rixon Agency (Public)
+  // Node 10 - Rixon Agency (Public) - far right
   {
     id: 10,
-    x: 85,
-    y: 65,
+    x: 78,
+    y: 60,
     type: "unlocked",
     title: "Rixon Agency",
     content:
@@ -123,21 +123,21 @@ const constellationNodes = [
     color: "yellow",
   },
 
-  // Node 11 - Ebony (Locked)
+  // Node 11 - Ebony (Locked) - right side, bottom
   {
     id: 11,
-    x: 80,
-    y: 75,
+    x: 75,
+    y: 70,
     type: "locked",
     partner: "Ebony",
     tier: "Platinum Partner",
     color: "stone",
   },
 
-  // Node 12 - TOTE & CARRY (Locked)
+  // Node 12 - TOTE & CARRY (Locked) - lower left
   {
     id: 12,
-    x: 45,
+    x: 38,
     y: 75,
     type: "locked",
     partner: "TOTE & CARRY",
@@ -145,10 +145,10 @@ const constellationNodes = [
     color: "rose",
   },
 
-  // Node 13 - Marrakesh (Public)
+  // Node 13 - Marrakesh (Public) - top center
   {
     id: 13,
-    x: 65,
+    x: 41,
     y: 30,
     type: "unlocked",
     title: "Marrakesh",
@@ -157,11 +157,11 @@ const constellationNodes = [
     color: "amber",
   },
 
-  // Node 14 - Host Hotel (Public)
+  // Node 14 - Host Hotel (Public) - upper left
   {
     id: 14,
-    x: 55,
-    y: 25,
+    x: 38,
+    y: 23,
     type: "unlocked",
     title: "Host Hotel",
     content:
@@ -169,22 +169,22 @@ const constellationNodes = [
     color: "red",
   },
 
-  // Node 15 - Phillips (Locked)
+  // Node 15 - Phillips (Locked) - moved up and right
   {
     id: 15,
-    x: 45,
-    y: 20,
+    x: 42, // Changed from 37 to 42 (moved right)
+    y: 12, // Changed from 16 to 12 (moved up)
     type: "locked",
     partner: "Phillips",
     tier: "Audio Technology Partner",
     color: "cyan",
   },
 
-  // Node 16 - Lune Lite (Public)
+  // Node 16 - Lune Lite (Public) - bottom of vertical line
   {
     id: 16,
     x: 25,
-    y: 50,
+    y: 80,
     type: "unlocked",
     title: "Lune Lite",
     content:
@@ -192,21 +192,21 @@ const constellationNodes = [
     color: "emerald",
   },
 
-  // Node 17 - Travel Noir (Locked)
+  // Node 17 - Travel Noir (Locked) - middle of vertical line
   {
     id: 17,
-    x: 25,
-    y: 70,
+    x: 19,
+    y: 65,
     type: "locked",
     partner: "Travel Noir",
     tier: "Experience Partner",
     color: "yellow",
   },
 
-  // Node 18 - Humble Barn (Public)
+  // Node 18 - Humble Barn (Public) - top of vertical line
   {
     id: 18,
-    x: 15,
+    x: 11,
     y: 45,
     type: "unlocked",
     title: "Humble Barn",
@@ -215,11 +215,11 @@ const constellationNodes = [
     color: "blue",
   },
 
-  // Node 19 - UBIGI (Locked)
+  // Node 19 - UBIGI (Locked) - upper left
   {
     id: 19,
-    x: 30,
-    y: 30,
+    x: 25,
+    y: 38,
     type: "locked",
     partner: "UBIGI",
     tier: "Connectivity Partner",
@@ -231,32 +231,44 @@ export default function ConstellationScene() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [selectedNode, setSelectedNode] = useState<any>(null)
   const [videoReady, setVideoReady] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detect mobile viewport
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
 
   // Safari video fallback: auto-show constellation after 5 seconds if video doesn't load
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setVideoReady(true);
-    }, 5000);
-    const video = videoRef.current;
+      setVideoReady(true)
+    }, 5000)
+    const video = videoRef.current
     const clear = () => {
-      clearTimeout(timeout);
-      setVideoReady(true);
-    };
+      clearTimeout(timeout)
+      setVideoReady(true)
+    }
     if (video) {
-      video.addEventListener("loadeddata", clear);
-      video.addEventListener("canplay", clear);
+      video.addEventListener("loadeddata", clear)
+      video.addEventListener("canplay", clear)
     }
     return () => {
-      clearTimeout(timeout);
+      clearTimeout(timeout)
       if (video) {
-        video.removeEventListener("loadeddata", clear);
-        video.removeEventListener("canplay", clear);
+        video.removeEventListener("loadeddata", clear)
+        video.removeEventListener("canplay", clear)
       }
-    };
-  }, []);
+    }
+  }, [])
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full overflow-hidden">
       {/* Background video */}
       <video
         ref={videoRef}
@@ -265,13 +277,13 @@ export default function ConstellationScene() {
         loop
         muted
         playsInline
-        style={{ opacity: videoReady ? 1 : 0, transition: 'opacity 0.5s' }}
+        style={{ opacity: videoReady ? 1 : 0, transition: "opacity 0.5s" }}
       >
         <source src="https://2qajpnkiaommrazx.public.blob.vercel-storage.com/video2.mp4" type="video/mp4" />
       </video>
 
-      {/* Overlay for better contrast */}
-      <div className="absolute inset-0 bg-black/40" />
+      {/* Overlay for better contrast - stronger on mobile */}
+      <div className={`absolute inset-0 ${isMobile ? "bg-black/50" : "bg-black/40"}`} />
 
       {/* Constellation nodes */}
       <div className="absolute inset-0">
@@ -280,38 +292,46 @@ export default function ConstellationScene() {
         ))}
       </div>
 
-      {/* Connection lines between nodes based on the image */}
+      {/* Connection lines */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none">
         <defs>
           <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(59, 130, 246, 0.3)" />
-            <stop offset="50%" stopColor="rgba(147, 197, 253, 0.6)" />
-            <stop offset="100%" stopColor="rgba(59, 130, 246, 0.3)" />
+            <stop offset="0%" stopColor="rgba(59, 130, 246, 0.4)" />
+            <stop offset="50%" stopColor="rgba(147, 197, 253, 0.7)" />
+            <stop offset="100%" stopColor="rgba(59, 130, 246, 0.4)" />
           </linearGradient>
         </defs>
 
-        {/* Draw constellation lines based on the image connections */}
+        {/* Connection lines with mobile-optimized visibility */}
         {[
-          [1, 5],
-          [1, 6],
-          [1, 4],
-          [1, 8],
-          [1, 9],
-          [5, 16],
-          [16, 18],
-          [18, 17],
-          [17, 12],
-          [12, 2],
-          [2, 11],
-          [11, 10],
-          [10, 9],
-          [9, 7],
-          [7, 3],
-          [6, 13],
-          [13, 14],
-          [14, 15],
-          [15, 19],
-          [4, 7],
+          // Top diagonal line 15-14-13
+          [15, 14], // 15 to 14
+          [14, 13], // 14 to 13
+
+          // Center parallelogram connections
+          [1, 4], // center parallelogram
+          [1, 5], // center parallelogram
+          [4, 6], // center parallelogram
+          [5, 6], // center parallelogram
+
+          // Connections from center parallelogram
+          [13, 5], // 13 connects to 5
+          [19, 5], // 19 connects to 5
+          [4, 7], // 4 connects to 7
+
+          // Right side connections
+          [7, 3], // 7 connects to 3
+          [7, 8], // 7 to 8
+          [8, 9], // 8 to 9
+          [9, 11], // 9 to 11
+          [10, 8], // 10 connects to 8
+
+          // Left side connections - vertical line 18-17-16
+          [19, 18], // 19 to 18
+          [18, 17], // 18 to 17
+          [17, 16], // 17 to 16 (vertical line)
+          [16, 12], // 16 to 12
+          [16, 2], // 16 to 2
         ].map(([startId, endId], index) => {
           const startNode = constellationNodes.find((n) => n.id === startId)
           const endNode = constellationNodes.find((n) => n.id === endId)
@@ -321,37 +341,57 @@ export default function ConstellationScene() {
             <motion.line
               key={`line-${startId}-${endId}`}
               initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 0.6 }}
+              animate={{ pathLength: 1, opacity: isMobile ? 0.5 : 0.6 }}
               transition={{ delay: index * 0.1 + 1, duration: 0.8 }}
               x1={`${startNode.x}%`}
               y1={`${startNode.y}%`}
               x2={`${endNode.x}%`}
               y2={`${endNode.y}%`}
               stroke="url(#lineGradient)"
-              strokeWidth="2"
+              strokeWidth={isMobile ? "1.5" : "2"}
             />
           )
         })}
       </svg>
 
-      {/* Legend */}
+      {/* Mobile-optimized Legend */}
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-8 bg-black/60 backdrop-blur-sm p-4 rounded-lg border border-blue-400/30"
+        className={`absolute ${
+          isMobile ? "bottom-4 left-4 right-4" : "bottom-8 left-8"
+        } bg-black/70 backdrop-blur-sm p-3 sm:p-4 rounded-lg border border-blue-400/30`}
       >
-        <div className="flex items-center space-x-4 text-sm">
+        <div className={`flex items-center ${isMobile ? "justify-center space-x-6" : "space-x-4"} text-xs sm:text-sm`}>
           <div className="flex items-center space-x-2">
-            <Star className="w-4 h-4 text-blue-400" />
-            <span className="text-white">Public Content</span>
+            <Star className="w-3 h-3 sm:w-4 sm:h-4 text-blue-400" />
+            <span className="text-white">Public</span>
           </div>
           <div className="flex items-center space-x-2">
-            <Lock className="w-4 h-4 text-yellow-400" />
-            <span className="text-white">Partner Access</span>
+            <Lock className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400" />
+            <span className="text-white">Partner</span>
           </div>
         </div>
       </motion.div>
+
+      {/* Mobile touch hint */}
+      {isMobile && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 3, duration: 1 }}
+          className="absolute top-4 left-1/2 transform -translate-x-1/2 text-center pointer-events-none"
+        >
+          <motion.div
+            animate={{ y: [0, 3, 0] }}
+            transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+            className="text-white/60 text-xs tracking-wider"
+          >
+            TAP NODES TO EXPLORE
+          </motion.div>
+        </motion.div>
+      )}
 
       {/* Node Modal */}
       {selectedNode && <NodeModal node={selectedNode} onClose={() => setSelectedNode(null)} />}

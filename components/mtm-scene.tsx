@@ -3,11 +3,11 @@
 import { useRef, useEffect, useState } from "react"
 import { motion } from "framer-motion"
 
-interface IntroSceneProps {
-  onEnterPortal: () => void
+interface MTMSceneProps {
+  onComplete: () => void
 }
 
-export default function IntroScene({ onEnterPortal }: IntroSceneProps) {
+export default function MTMScene({ onComplete }: MTMSceneProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [videoError, setVideoError] = useState(false)
   const [userInteracted, setUserInteracted] = useState(false)
@@ -19,29 +19,36 @@ export default function IntroScene({ onEnterPortal }: IntroSceneProps) {
     // iOS Safari specific setup
     const setupVideo = async () => {
       try {
-        video.muted = true
+        video.muted = false // Enable audio
         video.playsInline = true
         video.setAttribute("webkit-playsinline", "true")
         video.setAttribute("playsinline", "true")
 
-        // Try to play the video
+        // Try to play the video with audio
         const playPromise = video.play()
         if (playPromise !== undefined) {
           await playPromise
         }
       } catch (error) {
-        console.warn("Video autoplay failed:", error)
-        setVideoError(true)
+        console.warn("MTM Video autoplay failed:", error)
+        // If autoplay with audio fails, try muted autoplay as fallback
+        try {
+          video.muted = true
+          await video.play()
+        } catch (mutedError) {
+          console.warn("Muted autoplay also failed:", mutedError)
+          setVideoError(true)
+        }
       }
     }
 
-    // Enhanced fallback system for iOS Safari
+    // Fallback timeout for iOS Safari
     const fallbackTimeout = setTimeout(() => {
-      console.warn("Video fallback triggered")
+      console.warn("MTM Video fallback triggered")
       if (!userInteracted) {
-        onEnterPortal()
+        onComplete()
       }
-    }, 6000) // Reduced from 5 to 6 seconds
+    }, 6000)
 
     // Video event listeners
     const handleLoadedData = () => {
@@ -55,16 +62,16 @@ export default function IntroScene({ onEnterPortal }: IntroSceneProps) {
     }
 
     const handleError = (e: Event) => {
-      console.warn("Video error:", e)
+      console.warn("MTM Video error:", e)
       setVideoError(true)
       clearTimeout(fallbackTimeout)
       // Auto-proceed on video error
-      setTimeout(onEnterPortal, 1000)
+      setTimeout(onComplete, 1000)
     }
 
     const handleEnded = () => {
       if (!userInteracted) {
-        onEnterPortal()
+        onComplete()
       }
     }
 
@@ -86,11 +93,16 @@ export default function IntroScene({ onEnterPortal }: IntroSceneProps) {
         video.removeEventListener("ended", handleEnded)
       }
     }
-  }, [onEnterPortal, userInteracted])
+  }, [onComplete, userInteracted])
 
   const handleClick = () => {
     setUserInteracted(true)
-    onEnterPortal()
+    const video = videoRef.current
+    if (video && video.muted) {
+      // If video is muted due to autoplay restrictions, unmute on user interaction
+      video.muted = false
+    }
+    onComplete()
   }
 
   return (
@@ -104,7 +116,6 @@ export default function IntroScene({ onEnterPortal }: IntroSceneProps) {
         <video
           ref={videoRef}
           className="w-full h-full object-cover"
-          muted
           playsInline
           webkit-playsinline="true"
           preload="metadata"
@@ -113,15 +124,15 @@ export default function IntroScene({ onEnterPortal }: IntroSceneProps) {
             transform: "translateZ(0)",
           }}
         >
-          <source src="/videos/video1.mp4" type="video/mp4" />
+          <source src="/videos/MTM.mp4" type="video/mp4" />
         </video>
       ) : (
         // Fallback content when video fails
-        <div className="w-full h-full bg-gradient-to-br from-blue-900 via-purple-900 to-black flex items-center justify-center">
+        <div className="w-full h-full bg-gradient-to-br from-purple-900 via-blue-900 to-black flex items-center justify-center">
           <div className="text-center">
-            <div className="text-6xl mb-4">🌌</div>
-            <h1 className="text-4xl font-light text-white mb-2">The MTM Spot</h1>
-            <p className="text-white/60">Embrace The Noise</p>
+            <div className="text-6xl mb-4">🎵</div>
+            <h1 className="text-4xl font-light text-white mb-2">MTM</h1>
+            <p className="text-white/60">Music Transformation Movement</p>
           </div>
         </div>
       )}
@@ -134,7 +145,7 @@ export default function IntroScene({ onEnterPortal }: IntroSceneProps) {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 0.3, scale: 1 }}
         transition={{ delay: 1, duration: 2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute inset-0 bg-gradient-radial from-blue-400/10 via-transparent to-transparent"
+        className="absolute inset-0 bg-gradient-radial from-purple-400/10 via-transparent to-transparent"
       />
 
       {/* Enhanced click indicator */}
@@ -149,10 +160,10 @@ export default function IntroScene({ onEnterPortal }: IntroSceneProps) {
           transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
           className="text-white/70 text-xs sm:text-sm tracking-wider font-medium"
         >
-          TAP TO ENTER
+          TAP TO CONTINUE
         </motion.div>
 
-        {/* Enhanced ripple effect */}
+        {/* Enhanced ripple effect - remove border styling */}
         <motion.div
           animate={{ scale: [1, 1.3, 1], opacity: [0.6, 0, 0.6] }}
           transition={{ duration: 2.5, repeat: Number.POSITIVE_INFINITY }}
