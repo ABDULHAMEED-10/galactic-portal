@@ -179,12 +179,12 @@ export default function MTMScene({ onComplete }: MTMSceneProps) {
         <motion.div
           animate={{ scale: [1, 1.3, 1], opacity: [0.6, 0, 0.6] }}
           transition={{ duration: 2.5, repeat: Number.POSITIVE_INFINITY }}
-          className="absolute inset-0 bg-white/10 rounded-full"
+          className="absolute inset-0 rounded-full"
         />
         <motion.div
           animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0, 0.4] }}
           transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, delay: 0.5 }}
-          className="absolute inset-0 bg-white/5 rounded-full"
+          className="absolute inset-0 rounded-full"
         />
       </motion.div>
     </motion.div>
