@@ -235,7 +235,7 @@ export default function GalacticPortal() {
           </div>
 
           <div className="text-white/60 text-sm">
-            Loading Experience... {Math.min(Math.round(loadingProgress), 100)}%
+            Loading Portal... {Math.min(Math.round(loadingProgress), 100)}%
           </div>
         </div>
         <style jsx>{`

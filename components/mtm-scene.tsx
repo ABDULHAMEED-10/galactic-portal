@@ -11,6 +11,18 @@ export default function MTMScene({ onComplete }: MTMSceneProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [videoError, setVideoError] = useState(false)
   const [userInteracted, setUserInteracted] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detect mobile viewport
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
 
   useEffect(() => {
     const video = videoRef.current
@@ -107,7 +119,7 @@ export default function MTMScene({ onComplete }: MTMSceneProps) {
 
   return (
     <motion.div
-      className="relative w-full h-full cursor-pointer"
+      className="relative w-full h-full cursor-pointer bg-black"
       onClick={handleClick}
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.3 }}
@@ -115,7 +127,7 @@ export default function MTMScene({ onComplete }: MTMSceneProps) {
       {!videoError ? (
         <video
           ref={videoRef}
-          className="w-full h-full object-cover"
+          className={`w-full h-full ${isMobile ? "object-contain" : "object-cover"}`}
           playsInline
           webkit-playsinline="true"
           preload="metadata"
@@ -128,7 +140,7 @@ export default function MTMScene({ onComplete }: MTMSceneProps) {
         </video>
       ) : (
         // Fallback content when video fails
-        <div className="w-full h-full bg-gradient-to-br from-purple-900 via-blue-900 to-black flex items-center justify-center">
+        <div className="w-full h-full bg-black flex items-center justify-center">
           <div className="text-center">
             <div className="text-6xl mb-4">🎵</div>
             <h1 className="text-4xl font-light text-white mb-2">MTM</h1>
