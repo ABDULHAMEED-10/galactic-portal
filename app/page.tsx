@@ -231,11 +231,8 @@ export default function GalacticPortal() {
           ) : (
             <motion.div 
               className="text-white/90 text-sm font-medium mb-6"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ 
-                scale: [1, 1.05, 1],
-                opacity: 1
-              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ 
                 duration: 1.5, 
                 repeat: Infinity,
@@ -252,7 +249,7 @@ export default function GalacticPortal() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               onClick={() => setIsLoading(false)}
-              className="px-8 py-3 border border-white/60 backdrop-blur-sm bg-transparent rounded-full text-white font-medium 
+              className="px-8 py-2 border border-white/60 backdrop-blur-sm bg-transparent rounded-full text-white font-medium 
               hover:bg-white/10 hover:border-white/80 transition-all duration-300 
               focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-opacity-50 
               shadow-[0_0_15px_rgba(255,255,255,0.3)]"
