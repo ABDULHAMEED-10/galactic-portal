@@ -57,12 +57,10 @@ export default function GalacticPortal() {
           progress = Math.min(progress, 90)
           setLoadingProgress(progress)
 
-          // If all videos are loaded, complete the loading
+          // If all videos are loaded, complete the loading (but don't auto-proceed)
           if (video1Loaded && video2Loaded && video3Loaded) {
             setLoadingProgress(100)
-            setTimeout(() => {
-              setIsLoading(false)
-            }, 500)
+            // Removed auto-transition to next screen - wait for button click
           }
         }
 
@@ -160,25 +158,20 @@ export default function GalacticPortal() {
 
         await Promise.all(promises)
 
-        // Final progress update
+        // Final progress update - but don't automatically transition
         setLoadingProgress(100)
-        setTimeout(() => {
-          setIsLoading(false)
-        }, 500)
       } catch (error) {
         console.warn("Video preloading failed, proceeding anyway:", error)
         setLoadingProgress(100)
-        setTimeout(() => {
-          setIsLoading(false)
-        }, 500)
+        // Removed auto-transition to next screen - wait for button click
       }
     }
 
-    // iOS Safari fallback - always proceed after maximum 8 seconds
+    // iOS Safari fallback - set progress to 100% after maximum 8 seconds, but don't auto-proceed
     const maxLoadTime = setTimeout(() => {
-      console.warn("Maximum load time reached, proceeding")
+      console.warn("Maximum load time reached")
       setLoadingProgress(100)
-      setIsLoading(false)
+      // Removed auto-transition to next screen - wait for button click
     }, 8000)
 
     preloadVideos().finally(() => {
@@ -196,10 +189,7 @@ export default function GalacticPortal() {
 
   const enterConstellation = () => {
     setCurrentScene("transition")
-    // After zoom transition, show constellation
-    setTimeout(() => {
-      setCurrentScene("constellation")
-    }, 2000) // 2 seconds for zoom transition
+    // No auto-transition to constellation - user will click the button
   }
 
   if (isLoading) {
@@ -234,9 +224,44 @@ export default function GalacticPortal() {
             />
           </div>
 
-          <div className="text-white/60 text-sm">
-            Loading Portal... {Math.min(Math.round(loadingProgress), 100)}%
-          </div>
+          {loadingProgress < 100 ? (
+            <div className="text-white/60 text-sm mb-6">
+              Loading Portal... {Math.min(Math.round(loadingProgress), 100)}%
+            </div>
+          ) : (
+            <motion.div 
+              className="text-white/90 text-sm font-medium mb-6"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ 
+                scale: [1, 1.05, 1],
+                opacity: 1
+              }}
+              transition={{ 
+                duration: 1.5, 
+                repeat: Infinity,
+                repeatType: "reverse"
+              }}
+            >
+             
+            </motion.div>
+          )}
+          
+          {/* Glassy Next button that appears once loading is complete */}
+          {loadingProgress >= 100 && (
+            <motion.button
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              onClick={() => setIsLoading(false)}
+              className="px-8 py-3 border border-white/60 backdrop-blur-sm bg-transparent rounded-full text-white font-medium 
+              hover:bg-white/10 hover:border-white/80 transition-all duration-300 
+              focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-opacity-50 
+              shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              NEXT
+            </motion.button>
+          )}
         </div>
         <style jsx>{`
           .animate-spin-slow {
@@ -314,6 +339,22 @@ export default function GalacticPortal() {
                 transition={{ duration: 2, ease: "easeOut", delay: 0.4 }}
                 className="absolute w-32 h-32 rounded-full border border-white/60 bg-gradient-radial from-white/30 via-blue-400/20 to-transparent"
               />
+              
+              {/* Enter button - appears after animation completes - styled to match loading screen button */}
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 2, duration: 0.5 }}
+                onClick={() => setCurrentScene("constellation")}
+                className="absolute bottom-20 px-8 py-3 border border-white/60 backdrop-blur-sm bg-transparent rounded-full text-white font-medium 
+                hover:bg-white/10 hover:border-white/80 transition-all duration-300 
+                focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-opacity-50 
+                shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Enter Constellation
+              </motion.button>
             </div>
           </motion.div>
         )}

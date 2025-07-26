@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
+import { useRef, useLayoutEffect, useState } from "react"
 import { motion } from "framer-motion"
 
 interface IntroSceneProps {
@@ -10,9 +10,10 @@ interface IntroSceneProps {
 export default function IntroScene({ onEnterPortal }: IntroSceneProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [videoError, setVideoError] = useState(false)
-  const [userInteracted, setUserInteracted] = useState(false)
+  const [videoReady, setVideoReady] = useState(false)
 
-  useEffect(() => {
+  // Use useLayoutEffect to fix Safari video loading issues
+  useLayoutEffect(() => {
     const video = videoRef.current
     if (!video) return
 
@@ -28,6 +29,7 @@ export default function IntroScene({ onEnterPortal }: IntroSceneProps) {
         const playPromise = video.play()
         if (playPromise !== undefined) {
           await playPromise
+          setVideoReady(true)
         }
       } catch (error) {
         console.warn("Video autoplay failed:", error)
@@ -35,61 +37,38 @@ export default function IntroScene({ onEnterPortal }: IntroSceneProps) {
       }
     }
 
-    // Enhanced fallback system for iOS Safari
-    const fallbackTimeout = setTimeout(() => {
-      console.warn("Video fallback triggered")
-      if (!userInteracted) {
-        onEnterPortal()
-      }
-    }, 6000) // Reduced from 5 to 6 seconds
-
     // Video event listeners
     const handleLoadedData = () => {
-      clearTimeout(fallbackTimeout)
       setupVideo()
     }
 
     const handleCanPlay = () => {
-      clearTimeout(fallbackTimeout)
       setupVideo()
     }
 
     const handleError = (e: Event) => {
       console.warn("Video error:", e)
       setVideoError(true)
-      clearTimeout(fallbackTimeout)
-      // Auto-proceed on video error
-      setTimeout(onEnterPortal, 1000)
-    }
-
-    const handleEnded = () => {
-      if (!userInteracted) {
-        onEnterPortal()
-      }
     }
 
     // Add event listeners
     video.addEventListener("loadeddata", handleLoadedData)
     video.addEventListener("canplay", handleCanPlay)
     video.addEventListener("error", handleError)
-    video.addEventListener("ended", handleEnded)
 
     // Immediate setup attempt
     setupVideo()
 
     return () => {
-      clearTimeout(fallbackTimeout)
       if (video) {
         video.removeEventListener("loadeddata", handleLoadedData)
         video.removeEventListener("canplay", handleCanPlay)
         video.removeEventListener("error", handleError)
-        video.removeEventListener("ended", handleEnded)
       }
     }
-  }, [onEnterPortal, userInteracted])
+  }, []) // No dependencies as we only want this to run once
 
   const handleClick = () => {
-    setUserInteracted(true)
     onEnterPortal()
   }
 

@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect, useLayoutEffect, useState } from "react"
 import { motion } from "framer-motion"
 
 interface MTMSceneProps {
@@ -10,7 +10,7 @@ interface MTMSceneProps {
 export default function MTMScene({ onComplete }: MTMSceneProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [videoError, setVideoError] = useState(false)
-  const [userInteracted, setUserInteracted] = useState(false)
+  const [videoReady, setVideoReady] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
 
   // Detect mobile viewport
@@ -24,7 +24,7 @@ export default function MTMScene({ onComplete }: MTMSceneProps) {
     return () => window.removeEventListener("resize", checkMobile)
   }, [])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const video = videoRef.current
     if (!video) return
 
@@ -40,6 +40,7 @@ export default function MTMScene({ onComplete }: MTMSceneProps) {
         const playPromise = video.play()
         if (playPromise !== undefined) {
           await playPromise
+          setVideoReady(true)
         }
       } catch (error) {
         console.warn("MTM Video autoplay failed:", error)
@@ -47,6 +48,7 @@ export default function MTMScene({ onComplete }: MTMSceneProps) {
         try {
           video.muted = true
           await video.play()
+          setVideoReady(true)
         } catch (mutedError) {
           console.warn("Muted autoplay also failed:", mutedError)
           setVideoError(true)
@@ -54,61 +56,38 @@ export default function MTMScene({ onComplete }: MTMSceneProps) {
       }
     }
 
-    // Fallback timeout for iOS Safari
-    const fallbackTimeout = setTimeout(() => {
-      console.warn("MTM Video fallback triggered")
-      if (!userInteracted) {
-        onComplete()
-      }
-    }, 6000)
-
     // Video event listeners
     const handleLoadedData = () => {
-      clearTimeout(fallbackTimeout)
       setupVideo()
     }
 
     const handleCanPlay = () => {
-      clearTimeout(fallbackTimeout)
       setupVideo()
     }
 
     const handleError = (e: Event) => {
       console.warn("MTM Video error:", e)
       setVideoError(true)
-      clearTimeout(fallbackTimeout)
-      // Auto-proceed on video error
-      setTimeout(onComplete, 1000)
-    }
-
-    const handleEnded = () => {
-      if (!userInteracted) {
-        onComplete()
-      }
     }
 
     // Add event listeners
     video.addEventListener("loadeddata", handleLoadedData)
     video.addEventListener("canplay", handleCanPlay)
     video.addEventListener("error", handleError)
-    video.addEventListener("ended", handleEnded)
 
     // Immediate setup attempt
     setupVideo()
 
     return () => {
-      clearTimeout(fallbackTimeout)
       if (video) {
         video.removeEventListener("loadeddata", handleLoadedData)
         video.removeEventListener("canplay", handleCanPlay)
         video.removeEventListener("error", handleError)
-        video.removeEventListener("ended", handleEnded)
       }
     }
-  }, [onComplete, userInteracted])
+  }, []) // No dependencies to prevent re-runs
 
   const handleClick = () => {
-    setUserInteracted(true)
     const video = videoRef.current
     if (video && video.muted) {
       // If video is muted due to autoplay restrictions, unmute on user interaction
