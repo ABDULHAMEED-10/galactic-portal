@@ -16,7 +16,6 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [passwordError, setPasswordError] = useState("")
   const [isMobile, setIsMobile] = useState(false)
-  const [activeTab, setActiveTab] = useState<"content" | "video">("content")
 
   const isLocked = node.type === "locked"
 
@@ -386,7 +385,7 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
                     <div className="flex items-center space-x-2">
                       <Star className={`${isMobile ? "w-3 h-3" : "w-4 h-4"} text-blue-400`} />
                       <span className={`text-blue-400 font-medium ${isMobile ? "text-xs" : "text-sm"}`}>
-                        Public Content
+                        Public
                       </span>
                     </div>
                   </div>
@@ -398,37 +397,12 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
             </button>
           </div>
 
-          {/* Tab Navigation - Only show if has video and authenticated */}
-          {hasVideo && isAuthenticated && (
-            <div className={`flex border-b border-white/10 ${isMobile ? "px-4" : "px-6"}`}>
-              <button
-                onClick={() => setActiveTab("content")}
-                className={`px-4 py-2 text-sm font-medium transition-colors ${
-                  activeTab === "content"
-                    ? "text-blue-400 border-b-2 border-blue-400"
-                    : "text-white/60 hover:text-white"
-                }`}
-              >
-                Content
-              </button>
-              <button
-                onClick={() => setActiveTab("video")}
-                className={`px-4 py-2 text-sm font-medium transition-colors flex items-center space-x-2 ${
-                  activeTab === "video" ? "text-blue-400 border-b-2 border-blue-400" : "text-white/60 hover:text-white"
-                }`}
-              >
-                <Play className="w-3 h-3" />
-                <span>Video</span>
-              </button>
-            </div>
-          )}
-
           {/* Scrollable Content - Mobile Optimized */}
           <div className={`flex-1 overflow-y-auto ${isMobile ? "p-4 pt-3" : "p-6 pt-4"}`}>
             {isLocked ? (
               <>
-                {/* Show video tab if authenticated and has video */}
-                {isAuthenticated && hasVideo && activeTab === "video" && videoId && (
+                {/* Video at the top if available */}
+                {hasVideo && videoId && (
                   <div className="mb-6">
                     <VideoPlayer
                       videoId={videoId}
@@ -438,138 +412,135 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
                   </div>
                 )}
 
-                {/* Content tab or default content */}
-                {(!hasVideo || !isAuthenticated || activeTab === "content") && (
-                  <>
-                    {/* Partner Access Required */}
-                    <div className="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-4 sm:p-6 mb-4 sm:mb-6">
-                      <div className="flex items-center space-x-3 mb-4">
-                        <Lock className={`${isMobile ? "w-4 h-4" : "w-5 h-5"} text-yellow-400`} />
-                        <h3 className={`${isMobile ? "text-base" : "text-lg"} font-medium text-yellow-400`}>
-                          Partner Access Required
-                        </h3>
-                      </div>
-                      <p className={`text-white/80 mb-4 ${isMobile ? "text-xs" : "text-sm"}`}>
-                        This content is exclusively available to our {node.tier.toLowerCase()}.
-                      </p>
+                {/* Partner Access Required - Only show if not authenticated */}
+                {!isAuthenticated && (
+                  <div className="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-4 sm:p-6 mb-4 sm:mb-6">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <Lock className={`${isMobile ? "w-4 h-4" : "w-5 h-5"} text-yellow-400`} />
+                      <h3 className={`${isMobile ? "text-base" : "text-lg"} font-medium text-yellow-400`}>
+                        Partner Access Required
+                      </h3>
                     </div>
-
-                    {/* Partnership Benefits - Mobile Stacked */}
-                    <div className={`grid ${isMobile ? "grid-cols-1 gap-2" : "md:grid-cols-2 gap-4"} mb-4 sm:mb-6`}>
-                      <div className="bg-white/5 rounded-lg p-3 sm:p-4">
-                        <div className="flex items-center space-x-2 mb-2">
-                          <DollarSign className={`${isMobile ? "w-3 h-3" : "w-4 h-4"} text-green-400`} />
-                          <h4 className={`text-white font-medium ${isMobile ? "text-xs" : "text-sm"}`}>
-                            Investment Tier
-                          </h4>
-                        </div>
-                        <p className={`text-white/70 ${isMobile ? "text-xs" : "text-sm"}`}>
-                          Premium partnership with exclusive benefits and ROI opportunities.
-                        </p>
-                      </div>
-                      <div className="bg-white/5 rounded-lg p-3 sm:p-4">
-                        <div className="flex items-center space-x-2 mb-2">
-                          <Users className={`${isMobile ? "w-3 h-3" : "w-4 h-4"} text-blue-400`} />
-                          <h4 className={`text-white font-medium ${isMobile ? "text-xs" : "text-sm"}`}>
-                            Audience Reach
-                          </h4>
-                        </div>
-                        <p className={`text-white/70 ${isMobile ? "text-xs" : "text-sm"}`}>
-                          Access to our growing community of music and space enthusiasts.
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Password Authentication - Mobile Optimized */}
-                    <div className="bg-gradient-to-r from-yellow-400/20 to-orange-400/20 border border-yellow-400/30 rounded-lg p-4 sm:p-6 mt-4 sm:mt-6">
-                      {!isAuthenticated ? (
-                        <>
-                          <h4 className={`${isMobile ? "text-base" : "text-lg"} font-medium text-white mb-2`}>
-                            Partner Access
-                          </h4>
-                          <p className={`text-white/80 mb-4 ${isMobile ? "text-xs" : "text-sm"}`}>
-                            Enter your partner access code to view exclusive content{hasVideo ? " and videos" : ""}.
-                          </p>
-
-                          {!showPasswordInput ? (
-                            <button
-                              onClick={() => setShowPasswordInput(true)}
-                              className={`bg-yellow-400 text-black ${isMobile ? "px-3 py-1.5 text-xs" : "px-4 py-2 text-sm"} rounded-lg font-medium hover:bg-yellow-300 transition-colors w-full sm:w-auto`}
-                            >
-                              Access Partner Content
-                            </button>
-                          ) : (
-                            <form onSubmit={handlePasswordSubmit} className="space-y-3">
-                              <div>
-                                <input
-                                  type="password"
-                                  value={password}
-                                  onChange={(e) => setPassword(e.target.value)}
-                                  placeholder="Enter access code"
-                                  className={`w-full bg-black/50 border border-yellow-400/50 rounded-lg ${isMobile ? "px-2 py-1.5 text-xs" : "px-3 py-2 text-sm"} text-white placeholder-white/50 focus:outline-none focus:border-yellow-400`}
-                                  autoFocus
-                                />
-                                {passwordError && (
-                                  <p className={`text-red-400 ${isMobile ? "text-xs" : "text-sm"} mt-1`}>
-                                    {passwordError}
-                                  </p>
-                                )}
-                              </div>
-                              <div className={`flex ${isMobile ? "flex-col space-y-2" : "space-x-3"}`}>
-                                <button
-                                  type="submit"
-                                  className={`bg-yellow-400 text-black ${isMobile ? "px-3 py-1.5 text-xs" : "px-4 py-2 text-sm"} rounded-lg font-medium hover:bg-yellow-300 transition-colors ${isMobile ? "w-full" : ""}`}
-                                >
-                                  Access Content
-                                </button>
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    setShowPasswordInput(false)
-                                    setPassword("")
-                                    setPasswordError("")
-                                  }}
-                                  className={`bg-white/10 text-white ${isMobile ? "px-3 py-1.5 text-xs" : "px-4 py-2 text-sm"} rounded-lg font-medium hover:bg-white/20 transition-colors ${isMobile ? "w-full" : ""}`}
-                                >
-                                  Cancel
-                                </button>
-                              </div>
-                            </form>
-                          )}
-                        </>
-                      ) : (
-                        <div>
-                          <h4 className={`${isMobile ? "text-base" : "text-lg"} font-medium text-green-400 mb-3`}>
-                            ✓ Access Granted
-                          </h4>
-                          <p className={`text-white/80 mb-4 ${isMobile ? "text-xs" : "text-sm"}`}>
-                            Welcome, partner! You now have access to exclusive {node.partner} partnership benefits
-                            {hasVideo ? " and video content" : ""}.
-                          </p>
-
-                          {/* Exclusive Partner Perks - Mobile Optimized */}
-                          <div className="bg-green-400/10 border border-green-400/30 rounded-lg p-4 sm:p-6">
-                            <h5 className={`text-green-400 font-medium mb-3 ${isMobile ? "text-sm" : "text-base"}`}>
-                              Exclusive Partnership Benefits
-                            </h5>
-                            <div className={`space-y-2 ${isMobile ? "max-h-48" : "max-h-64"} overflow-y-auto`}>
-                              {partnerPerks[node.partner]?.map((perk, index) => (
-                                <div key={index} className="flex items-start space-x-2 text-left">
-                                  <Zap
-                                    className={`${isMobile ? "w-2 h-2" : "w-3 h-3"} text-green-400 mt-0.5 flex-shrink-0`}
-                                  />
-                                  <span className={`text-white/80 ${isMobile ? "text-xs" : "text-sm"} leading-relaxed`}>
-                                    {perk}
-                                  </span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </>
+                    <p className={`text-white/80 mb-4 ${isMobile ? "text-xs" : "text-sm"}`}>
+                      Partnership perks and benefits are exclusively available to our {node.tier.toLowerCase()}. 
+                      {hasVideo && " Videos are accessible to all users."}
+                    </p>
+                  </div>
                 )}
+
+                {/* Partnership Benefits - Mobile Stacked */}
+                <div className={`grid ${isMobile ? "grid-cols-1 gap-2" : "md:grid-cols-2 gap-4"} mb-4 sm:mb-6`}>
+                  <div className="bg-white/5 rounded-lg p-3 sm:p-4">
+                    <div className="flex items-center space-x-2 mb-2">
+                      <DollarSign className={`${isMobile ? "w-3 h-3" : "w-4 h-4"} text-green-400`} />
+                      <h4 className={`text-white font-medium ${isMobile ? "text-xs" : "text-sm"}`}>
+                        Investment Tier
+                      </h4>
+                    </div>
+                    <p className={`text-white/70 ${isMobile ? "text-xs" : "text-sm"}`}>
+                      Premium partnership with exclusive benefits and ROI opportunities.
+                    </p>
+                  </div>
+                  <div className="bg-white/5 rounded-lg p-3 sm:p-4">
+                    <div className="flex items-center space-x-2 mb-2">
+                      <Users className={`${isMobile ? "w-3 h-3" : "w-4 h-4"} text-blue-400`} />
+                      <h4 className={`text-white font-medium ${isMobile ? "text-xs" : "text-sm"}`}>
+                        Audience Reach
+                      </h4>
+                    </div>
+                    <p className={`text-white/70 ${isMobile ? "text-xs" : "text-sm"}`}>
+                      Access to our growing community of music and space enthusiasts.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Password Authentication - Mobile Optimized */}
+                <div className="bg-gradient-to-r from-yellow-400/20 to-orange-400/20 border border-yellow-400/30 rounded-lg p-4 sm:p-6 mt-4 sm:mt-6">
+                  {!isAuthenticated ? (
+                    <>
+                      <h4 className={`${isMobile ? "text-base" : "text-lg"} font-medium text-white mb-2`}>
+                        Partner Access
+                      </h4>
+                      <p className={`text-white/80 mb-4 ${isMobile ? "text-xs" : "text-sm"}`}>
+                        Enter your partner access code to view exclusive perks and benefits. Videos are available to all users.
+                      </p>
+
+                      {!showPasswordInput ? (
+                        <button
+                          onClick={() => setShowPasswordInput(true)}
+                          className={`bg-yellow-400 text-black ${isMobile ? "px-3 py-1.5 text-xs" : "px-4 py-2 text-sm"} rounded-lg font-medium hover:bg-yellow-300 transition-colors w-full sm:w-auto`}
+                        >
+                          Access Partner Content
+                        </button>
+                      ) : (
+                        <form onSubmit={handlePasswordSubmit} className="space-y-3">
+                          <div>
+                            <input
+                              type="password"
+                              value={password}
+                              onChange={(e) => setPassword(e.target.value)}
+                              placeholder="Enter access code"
+                              className={`w-full bg-black/50 border border-yellow-400/50 rounded-lg ${isMobile ? "px-2 py-1.5 text-xs" : "px-3 py-2 text-sm"} text-white placeholder-white/50 focus:outline-none focus:border-yellow-400`}
+                              autoFocus
+                            />
+                            {passwordError && (
+                              <p className={`text-red-400 ${isMobile ? "text-xs" : "text-sm"} mt-1`}>
+                                {passwordError}
+                              </p>
+                            )}
+                          </div>
+                          <div className={`flex ${isMobile ? "flex-col space-y-2" : "space-x-3"}`}>
+                            <button
+                              type="submit"
+                              className={`bg-yellow-400 text-black ${isMobile ? "px-3 py-1.5 text-xs" : "px-4 py-2 text-sm"} rounded-lg font-medium hover:bg-yellow-300 transition-colors ${isMobile ? "w-full" : ""}`}
+                            >
+                              Access Content
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setShowPasswordInput(false)
+                                setPassword("")
+                                setPasswordError("")
+                              }}
+                              className={`bg-white/10 text-white ${isMobile ? "px-3 py-1.5 text-xs" : "px-4 py-2 text-sm"} rounded-lg font-medium hover:bg-white/20 transition-colors ${isMobile ? "w-full" : ""}`}
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        </form>
+                      )}
+                    </>
+                  ) : (
+                    <div>
+                      <h4 className={`${isMobile ? "text-base" : "text-lg"} font-medium text-green-400 mb-3`}>
+                        ✓ Access Granted
+                      </h4>
+                      <p className={`text-white/80 mb-4 ${isMobile ? "text-xs" : "text-sm"}`}>
+                        Welcome, partner! You now have access to exclusive {node.partner} partnership benefits and perks.
+                      </p>
+
+                      {/* Exclusive Partner Perks - Mobile Optimized */}
+                      <div className="bg-green-400/10 border border-green-400/30 rounded-lg p-4 sm:p-6">
+                        <h5 className={`text-green-400 font-medium mb-3 ${isMobile ? "text-sm" : "text-base"}`}>
+                          Exclusive Partnership Benefits
+                        </h5>
+                        <div className={`space-y-2 ${isMobile ? "max-h-48" : "max-h-64"} overflow-y-auto`}>
+                          {partnerPerks[node.partner]?.map((perk, index) => (
+                            <div key={index} className="flex items-start space-x-2 text-left">
+                              <Zap
+                                className={`${isMobile ? "w-2 h-2" : "w-3 h-3"} text-green-400 mt-0.5 flex-shrink-0`}
+                              />
+                              <span className={`text-white/80 ${isMobile ? "text-xs" : "text-sm"} leading-relaxed`}>
+                                {perk}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </>
             ) : (
               <>
