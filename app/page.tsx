@@ -188,8 +188,8 @@ export default function GalacticPortal() {
   }
 
   const enterConstellation = () => {
-    setCurrentScene("transition")
-    // No auto-transition to constellation - user will click the button
+    // Skip transition scene, go directly to constellation
+    setCurrentScene("constellation")
   }
 
   if (isLoading) {
@@ -242,7 +242,7 @@ export default function GalacticPortal() {
                 repeatType: "reverse"
               }}
             >
-             
+              Click to Begin
             </motion.div>
           )}
           
@@ -339,22 +339,6 @@ export default function GalacticPortal() {
                 transition={{ duration: 2, ease: "easeOut", delay: 0.4 }}
                 className="absolute w-32 h-32 rounded-full border border-white/60 bg-gradient-radial from-white/30 via-blue-400/20 to-transparent"
               />
-              
-              {/* Enter button - appears after animation completes - styled to match loading screen button */}
-              <motion.button
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 2, duration: 0.5 }}
-                onClick={() => setCurrentScene("constellation")}
-                className="absolute bottom-20 px-8 py-3 border border-white/60 backdrop-blur-sm bg-transparent rounded-full text-white font-medium 
-                hover:bg-white/10 hover:border-white/80 transition-all duration-300 
-                focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-opacity-50 
-                shadow-[0_0_15px_rgba(255,255,255,0.3)]"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Enter Constellation
-              </motion.button>
             </div>
           </motion.div>
         )}
