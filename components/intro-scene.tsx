@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useLayoutEffect, useState } from "react"
+import { useRef, useLayoutEffect, useState, useEffect } from "react"
 import { motion } from "framer-motion"
 
 interface IntroSceneProps {
@@ -9,6 +9,7 @@ interface IntroSceneProps {
 
 export default function IntroScene({ onEnterPortal }: IntroSceneProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const audioRef = useRef<HTMLAudioElement>(null)
   const [videoError, setVideoError] = useState(false)
   const [videoReady, setVideoReady] = useState(false)
 
@@ -68,6 +69,30 @@ export default function IntroScene({ onEnterPortal }: IntroSceneProps) {
     }
   }, []) // No dependencies as we only want this to run once
 
+  // Portal audio setup
+  useEffect(() => {
+    const audio = audioRef.current
+    if (!audio) return
+
+    // Set up audio properties
+    audio.loop = true
+    audio.volume = 0.3
+    audio.preload = "metadata"
+
+    // Start playing when video is ready
+    if (videoReady) {
+      audio.play().catch(console.warn)
+    }
+
+    // Cleanup audio when component unmounts
+    return () => {
+      if (audio) {
+        audio.pause()
+        audio.currentTime = 0
+      }
+    }
+  }, [videoReady])
+
   const handleClick = () => {
     onEnterPortal()
   }
@@ -79,6 +104,8 @@ export default function IntroScene({ onEnterPortal }: IntroSceneProps) {
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.3 }}
     >
+      {/* Portal audio */}
+      <audio ref={audioRef} src="/Audios/Portal audio.mp3" />
       {!videoError ? (
         <video
           ref={videoRef}

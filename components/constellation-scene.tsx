@@ -229,6 +229,7 @@ const constellationNodes = [
 
 export default function ConstellationScene() {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const audioRef = useRef<HTMLAudioElement>(null)
   const [selectedNode, setSelectedNode] = useState<any>(null)
   const [videoReady, setVideoReady] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
@@ -267,8 +268,35 @@ export default function ConstellationScene() {
     }
   }, [])
 
+  // Background audio setup - only for constellation scene (last screen)
+  useEffect(() => {
+    const audio = audioRef.current
+    if (!audio) return
+
+    // Set up audio properties
+    audio.loop = true
+    audio.volume = 0.3
+    audio.preload = "metadata"
+
+    // Start playing when video is ready (only on constellation scene)
+    if (videoReady) {
+      audio.play().catch(console.warn)
+    }
+
+    // Cleanup audio when component unmounts
+    return () => {
+      if (audio) {
+        audio.pause()
+        audio.currentTime = 0
+      }
+    }
+  }, [videoReady])
+
   return (
     <div className="relative w-full h-full overflow-hidden">
+      {/* Background audio */}
+      <audio ref={audioRef} src="/Audios/Planet Space.m4a" />
+      
       {/* Background video */}
       <video
         ref={videoRef}
@@ -374,6 +402,8 @@ export default function ConstellationScene() {
           </div>
         </div>
       </motion.div>
+
+
 
       {/* Mobile touch hint */}
       {isMobile && (
