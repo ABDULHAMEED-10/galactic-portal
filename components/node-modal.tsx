@@ -398,7 +398,7 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
           </div>
 
           {/* Scrollable Content - Mobile Optimized */}
-          <div className={`flex-1 overflow-y-auto ${isMobile ? "p-4 pt-3" : "p-6 pt-4"}`}>
+          <div className={`flex-1 overflow-y-auto modal-content-scroll ${isMobile ? "p-4 pt-3" : "p-6 pt-4"}`}>
             {isLocked ? (
               <>
                 {/* Video at the top if available */}
@@ -525,7 +525,7 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
                         <h5 className={`text-green-400 font-medium mb-3 ${isMobile ? "text-sm" : "text-base"}`}>
                           Exclusive Partnership Benefits
                         </h5>
-                        <div className={`space-y-2 ${isMobile ? "max-h-48" : "max-h-64"} overflow-y-auto`}>
+                        <div className={`space-y-2 ${isMobile ? "max-h-48" : "max-h-64"} overflow-y-auto modal-content-scroll`}>
                           {partnerPerks[node.partner]?.map((perk, index) => (
                             <div key={index} className="flex items-start space-x-2 text-left">
                               <Zap

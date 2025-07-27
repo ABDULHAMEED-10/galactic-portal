@@ -35,7 +35,7 @@ export default function VideoPlayer({ videoId, title, className = "" }: VideoPla
         setIsPlaying(false)
       } else {
         // Play video with autoplay
-        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=${isMuted ? 1 : 0}&rel=0&modestbranding=1`
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=${isMuted ? 1 : 0}&rel=0&modestbranding=1&enablejsapi=1&origin=${window.location.origin}`
         setIsPlaying(true)
       }
     }
@@ -45,7 +45,7 @@ export default function VideoPlayer({ videoId, title, className = "" }: VideoPla
     setIsMuted(!isMuted)
     if (iframeRef.current && isPlaying) {
       const iframe = iframeRef.current
-      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=${!isMuted ? 1 : 0}&rel=0&modestbranding=1`
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=${!isMuted ? 1 : 0}&rel=0&modestbranding=1&enablejsapi=1&origin=${window.location.origin}`
     }
   }
 
@@ -64,10 +64,10 @@ export default function VideoPlayer({ videoId, title, className = "" }: VideoPla
       {/* Video iframe */}
       <iframe
         ref={iframeRef}
-        src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`}
+        src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&enablejsapi=1&origin=${window.location.origin}`}
         title={title}
         className="w-full h-full"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
       />
 

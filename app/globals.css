@@ -48,6 +48,27 @@ body {
   -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
 }
 
+/* Enhanced scrolling for modal content - US compatibility */
+.overflow-y-auto {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.overflow-y-auto::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Ensure modal content is scrollable on all devices */
+.modal-content-scroll {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
 /* iOS Safari video fix */
 video {
   -webkit-playsinline: true;
