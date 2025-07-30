@@ -371,10 +371,26 @@ export default function ConstellationScene() {
               initial={{ pathLength: 0, opacity: 0 }}
               animate={{ pathLength: 1, opacity: isMobile ? 0.5 : 0.6 }}
               transition={{ delay: index * 0.1 + 1, duration: 0.8 }}
-              x1={`${startNode.x}%`}
-              y1={`${startNode.y}%`}
-              x2={`${endNode.x}%`}
-              y2={`${endNode.y}%`}
+              x1={isMobile ? 
+                startNode.id === 3 ? `${(startNode.x * 1.2) - 5}%` :
+                startNode.id === 10 || startNode.id === 11 ? `${(startNode.x * 1.2) - 5}%` :
+                startNode.id === 15 ? `${(startNode.x * 1.2) - 5}%` :
+                `${(startNode.x * 1.2) - 10}%` :
+                `${startNode.x + 2}%`}
+              y1={isMobile ? 
+                startNode.id === 3 ? `${(startNode.y * 0.8) + 10}%` :
+                `${(startNode.y * 0.8) + 8}%` :
+                `${startNode.y + 2}%`}
+              x2={isMobile ? 
+                endNode.id === 3 ? `${(endNode.x * 1.2) - 5}%` :
+                endNode.id === 10 || endNode.id === 11 ? `${(endNode.x * 1.2) - 5}%` :
+                endNode.id === 15 ? `${(endNode.x * 1.2) - 5}%` :
+                `${(endNode.x * 1.2) - 10}%` :
+                `${endNode.x + 2}%`}
+              y2={isMobile ? 
+                endNode.id === 3 ? `${(endNode.y * 0.8) + 10}%` :
+                `${(endNode.y * 0.8) + 8}%` :
+                `${endNode.y + 2}%`}
               stroke="url(#lineGradient)"
               strokeWidth={isMobile ? "1.5" : "2"}
             />

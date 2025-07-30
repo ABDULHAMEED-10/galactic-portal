@@ -70,7 +70,7 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
     Phillips: "_l0Bpab1dIQ",
     "Travel Noir": "5d6vB4kyKa0",
     UBIGI: "LPcEY2YvdvU",
-    Honda: "ZjUi6usz_y4", // Using first Honda video
+    Honda: "rRALihmb9xg", // Updated Honda video
     Pandora: "3zV1yMAsnbw",
     "Glory Foods": "tMaDAJiIFkI",
     "Gibson Guitars": "RKvNdc-M_30",

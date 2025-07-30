@@ -93,7 +93,18 @@ export default function ConstellationNode({ node, index, onClick }: Constellatio
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: index * 0.1 + 0.5, duration: 0.6 }}
       className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
-      style={{ left: `${node.x}%`, top: `${node.y}%` }}
+      style={{ 
+        left: isMobile ? 
+          node.id === 3 ? `${(node.x * 1.2) - 5}%` : // Move node 3 further right
+          node.id === 10 || node.id === 11 ? `${(node.x * 1.2) - 5}%` : // Move nodes 10 and 11 further right
+          node.id === 15 ? `${(node.x * 1.2) - 5}%` : // Move node 15 further right
+          `${(node.x * 1.2) - 10}%` : 
+          `${node.x + 2}%`, // Center horizontally on desktop (+2% offset)
+        top: isMobile ? 
+          node.id === 3 ? `${(node.y * 0.8) + 10}%` : // Move node 3 a little down
+          `${(node.y * 0.8) + 8}%` : 
+          `${node.y + 2}%` // Center vertically on desktop (+2% offset)
+      }}
       onClick={handleClick}
       onTouchStart={() => isMobile && setShowTooltip(true)}
       onTouchEnd={() => isMobile && setTimeout(() => setShowTooltip(false), 2000)}
@@ -136,7 +147,7 @@ export default function ConstellationNode({ node, index, onClick }: Constellatio
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{
-          opacity: showTooltip || (!isMobile && 0),
+          opacity: showTooltip || (!isMobile && 0) ? 1 : 0,
           y: showTooltip || (!isMobile && 0) ? 0 : 10,
         }}
         whileHover={!isMobile ? { opacity: 1, y: 0 } : {}}
