@@ -2,7 +2,7 @@
 import type React from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, Lock, Star, Building2, DollarSign, Users, Zap, Play } from "lucide-react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import VideoPlayer from "./video-player"
 
 interface NodeModalProps {
@@ -52,15 +52,15 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
     "TOTE & CARRY": "/logos/tote & carry.jpeg",
     Phillips: "/logos/philips.jpeg",
     Honda: "/logos/honda.png",
-    NFOH: "/logos/NFOH.jpeg",
+    "MEDERIC TURAY": "🎨",
     "Rixon Agency": "/logos/rixon.png",
     AIX: "/logos/AIX.jpeg",
-    MTMSPOT: "/logos/MTM spot.jpeg",
+    "THE NFOH ENCOUNTER": "/logos/NFOH.jpeg",
     MMV: "/logos/MMV image.jpeg",
     "Humble Barn": "/logos/humble baron.jpeg",
     Marrakesh: "🏛️",
-    "Host Hotel": "🏨",
-    "Lune Lite": "/logos/Luna Lite.png",
+    "PRIVATE HIDEAWAY VILLAS": "/logos/privatehideawayvillaslogo.png",
+    "Domaine Zeina": "🏰",
   }
 
   // Video mappings for partner nodes
@@ -70,11 +70,12 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
     Phillips: "_l0Bpab1dIQ",
     "Travel Noir": "5d6vB4kyKa0",
     UBIGI: "LPcEY2YvdvU",
-    Honda: "rRALihmb9xg", // Updated Honda video
+    Honda: "NbXmGjD33P8", // Updated Honda video
     Pandora: "3zV1yMAsnbw",
     "Glory Foods": "tMaDAJiIFkI",
     "Gibson Guitars": "RKvNdc-M_30",
     Verizon: "acy8jlXUMFM",
+    "MEDERIC TURAY": "medric", // Mederic Turay video
   }
 
   const partnerPerks: { [key: string]: string[] } = {
@@ -315,8 +316,8 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
   }
 
   // Check if node has video content
-  const hasVideo = isLocked ? partnerVideos[node.partner] : false
-  const videoId = isLocked ? partnerVideos[node.partner] : null
+  const hasVideo = isLocked ? partnerVideos[node.partner] : partnerVideos[node.title]
+  const videoId = isLocked ? partnerVideos[node.partner] : partnerVideos[node.title]
 
   return (
     <AnimatePresence>
@@ -398,7 +399,7 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
           </div>
 
           {/* Scrollable Content - Mobile Optimized */}
-          <div className={`flex-1 overflow-y-auto modal-content-scroll ${isMobile ? "p-4 pt-3" : "p-6 pt-4"}`}>
+          <div className={`flex-1 overflow-y-auto ${isMobile ? "p-4 pt-3" : "p-6 pt-4"}`}>
             {isLocked ? (
               <>
                 {/* Video at the top if available */}
@@ -525,7 +526,7 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
                         <h5 className={`text-green-400 font-medium mb-3 ${isMobile ? "text-sm" : "text-base"}`}>
                           Exclusive Partnership Benefits
                         </h5>
-                        <div className={`space-y-2 ${isMobile ? "max-h-48" : "max-h-64"} overflow-y-auto modal-content-scroll`}>
+                        <div className={`space-y-2 ${isMobile ? "max-h-48" : "max-h-64"} overflow-y-auto`}>
                           {partnerPerks[node.partner]?.map((perk, index) => (
                             <div key={index} className="flex items-start space-x-2 text-left">
                               <Zap
@@ -546,6 +547,16 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
               <>
                 {/* Public Content - Mobile Optimized */}
                 <div className="prose prose-invert max-w-none">
+                  {/* Video at the top if available for public nodes */}
+                  {hasVideo && videoId && (
+                    <div className="mb-6">
+                      <VideoPlayer
+                        videoId={videoId}
+                        title={`${node.title} Video`}
+                        className={`${isMobile ? "h-48" : "h-80"} w-full`}
+                      />
+                    </div>
+                  )}
                   {/* For Marrakesh node, display image and text with improved layout */}
                   {node.title === "Marrakesh" && (
                     <div
@@ -553,7 +564,7 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
                     >
                       <div className="relative">
                         <img
-                          src="/images/Marrakesh.png"
+                          src="/images/Marrakesh.jpeg"
                           alt="Marrakesh"
                           className="w-full h-auto rounded-lg object-cover shadow-lg"
                         />
@@ -562,7 +573,7 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
                       <div className="space-y-4">
                         <div className="bg-amber-400/10 border border-amber-400/30 rounded-lg p-4">
                           <h3 className={`text-amber-400 font-semibold mb-2 ${isMobile ? "text-sm" : "text-base"}`}>
-                            🏛️ Marrakech Media Village
+                            Marrakech Media Village
                           </h3>
                           <p className={`text-white/90 ${isMobile ? "text-xs" : "text-sm"} leading-relaxed`}>
                             {node.content}
@@ -602,7 +613,7 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
                       <div className="space-y-4">
                         <div className="bg-lime-400/10 border border-lime-400/30 rounded-lg p-4">
                           <h3 className={`text-lime-400 font-semibold mb-2 ${isMobile ? "text-sm" : "text-base"}`}>
-                            🎨 MMV Unreal Engine Studio
+                            MMV Unreal Engine Studio
                           </h3>
                           <p className={`text-white/90 ${isMobile ? "text-xs" : "text-sm"} leading-relaxed`}>
                             {node.content}
@@ -622,8 +633,116 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
                     </div>
                   )}
 
+                  {/* For NFOH node, display image and text with improved layout */}
+                  {node.title === "THE NFOH ENCOUNTER" && (
+                    <div
+                      className={`mb-6 ${isMobile ? "space-y-4" : "grid grid-cols-1 lg:grid-cols-2 gap-6 items-start"}`}
+                    >
+                      <div className="relative">
+                        <img
+                          src="/images/NFOH.jpeg"
+                          alt="NFOH"
+                          className="w-full h-auto rounded-lg object-cover shadow-lg"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg" />
+                      </div>
+                      <div className="space-y-4">
+                        <div className="bg-purple-400/10 border border-purple-400/30 rounded-lg p-4">
+                          <h3 className={`text-purple-400 font-semibold mb-2 ${isMobile ? "text-sm" : "text-base"}`}>
+                            THE NFOH ENCOUNTER
+                          </h3>
+                          <p className={`text-white/90 ${isMobile ? "text-xs" : "text-sm"} leading-relaxed`}>
+                            {node.content}
+                          </p>
+                        </div>
+                        <div className="grid grid-cols-2 gap-3 text-center">
+                          <div className="bg-white/5 rounded-lg p-3">
+                            <div className={`text-purple-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>Story</div>
+                            <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>Commanders</div>
+                          </div>
+                          <div className="bg-white/5 rounded-lg p-3">
+                            <div className={`text-purple-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>Platforms</div>
+                            <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>of Becoming</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* For Domaine Zeina node, display image and text with improved layout */}
+                  {node.title === "Domaine Zeina" && (
+                    <div
+                      className={`mb-6 ${isMobile ? "space-y-4" : "grid grid-cols-1 lg:grid-cols-2 gap-6 items-start"}`}
+                    >
+                      <div className="relative">
+                        <img
+                          src="/images/Domaine.jpeg"
+                          alt="Domaine Zeina"
+                          className="w-full h-auto rounded-lg object-cover shadow-lg"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg" />
+                      </div>
+                      <div className="space-y-4">
+                        <div className="bg-emerald-400/10 border border-emerald-400/30 rounded-lg p-4">
+                          <h3 className={`text-emerald-400 font-semibold mb-2 ${isMobile ? "text-sm" : "text-base"}`}>
+                            DOMAINE ZEINA
+                          </h3>
+                          <p className={`text-white/90 ${isMobile ? "text-xs" : "text-sm"} leading-relaxed`}>
+                            {node.content}
+                          </p>
+                        </div>
+                        <div className="grid grid-cols-2 gap-3 text-center">
+                          <div className="bg-white/5 rounded-lg p-3">
+                            <div className={`text-emerald-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>15</div>
+                            <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>Hectares</div>
+                          </div>
+                          <div className="bg-white/5 rounded-lg p-3">
+                            <div className={`text-emerald-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>Atlas</div>
+                            <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>Mountains</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* For Humble Barn node, display image and text with improved layout */}
+                  {node.title === "Humble Barn" && (
+                    <div
+                      className={`mb-6 ${isMobile ? "space-y-4" : "grid grid-cols-1 lg:grid-cols-2 gap-6 items-start"}`}
+                    >
+                      <div className="relative">
+                        <img
+                          src="/images/humble.jpeg"
+                          alt="Humble Barn"
+                          className="w-full h-auto rounded-lg object-cover shadow-lg"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg" />
+                      </div>
+                      <div className="space-y-4">
+                        <div className="bg-blue-400/10 border border-blue-400/30 rounded-lg p-4">
+                          <h3 className={`text-blue-400 font-semibold mb-2 ${isMobile ? "text-sm" : "text-base"}`}>
+                            HUMBLE BARON
+                          </h3>
+                          <p className={`text-white/90 ${isMobile ? "text-xs" : "text-sm"} leading-relaxed`}>
+                            {node.content}
+                          </p>
+                        </div>
+                        <div className="grid grid-cols-2 gap-3 text-center">
+                          <div className="bg-white/5 rounded-lg p-3">
+                            <div className={`text-blue-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>300</div>
+                            <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>Acres</div>
+                          </div>
+                          <div className="bg-white/5 rounded-lg p-3">
+                            <div className={`text-blue-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>16</div>
+                            <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>Artists</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   {/* For all other nodes, just show text with better styling */}
-                  {node.title !== "Marrakesh" && node.title !== "MMV" && (
+                  {node.title !== "Marrakesh" && node.title !== "MMV" && node.title !== "THE NFOH ENCOUNTER" && node.title !== "Domaine Zeina" && node.title !== "Humble Barn" && (
                     <div className="bg-white/5 border border-white/10 rounded-lg p-4 sm:p-6">
                       <p className={`text-white/90 ${isMobile ? "text-sm" : "text-base"} leading-relaxed`}>
                         {node.content}

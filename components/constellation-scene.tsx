@@ -8,15 +8,15 @@ import NodeModal from "./node-modal"
 
 // Updated constellation nodes optimized for both desktop and mobile
 const constellationNodes = [
-  // Node 1 - NFOH (Public) - center of parallelogram
+  // Node 1 - MEDERIC TURAY (Public) - center of parallelogram
   {
     id: 1,
     x: 48,
     y: 60,
     type: "unlocked",
-    title: "NFOH",
+    title: "MEDERIC TURAY",
     content:
-      "Being heard amid the roar of your competitor's voices is a daunting task in today's crowded marketplace. We find this to be shockingly true each time we read a magazine, watch the television, surf the web, and listen to music. The MTM SPOT is at the cornerstone of our brands mantra to establish 'Platforms of Becoming' to unveil the true power of industry and create sensory engagement musical encounters that ultimately culminates into empowerment experiences. We are Story Commanders who understand the Art of curating Brand Encounters based upon the beliefs, values, perspectives of the individuals present who then falls in love with where we hope irrespective of nationality, race, age and or gender. HearYE, HearYE, Be YE Transformed! 'People don't buy what you do; they buy why you do it.' - Andrew Esse",
+      "MEDERIC TURAY - Our 'Iconic Advantage' lies in our ability to identify concrete unearthed possibilities illuminating the abstract concepts and ideations through the lens that breaks the constraints imposed by the major societal and cultural trends before us. MTM commissions Ivorian Born, and Morocco based artist Mederic Turay to curate 17 AI Digital Artwork Movie Posters of the Artists, Producers, & Songwriters at MMV Unreal Engine Studio. The MTM Art Collection demonstrates man's constant quest for balance and duality in life through music. The Artwork, steeped in rich West African roots and shot in Morocco at Marrakesh Media Village, will be featured at the Soundtrack Release at Humble Baron at Uncle Nearest Green's Humble Baron Venue in Shelbyville, TN.",
     color: "cyan",
   },
 
@@ -31,15 +31,15 @@ const constellationNodes = [
     color: "emerald",
   },
 
-  // Node 3 - MTMSPOT (Public) - upper right
+  // Node 3 - THE NFOH ENCOUNTER (Public) - upper right
   {
     id: 3,
     x: 80,
     y: 30,
     type: "unlocked",
-    title: "MTMSPOT",
+    title: "THE NFOH ENCOUNTER",
     content:
-      "The MTM Spot is an Exclusive Music Encounter captured in 3 epic locations starting on the pristine shores of Jamaica to the ancient land of Morocco to the final stop on the expansive plains of Shelbyville, TN. Each stop goes 'Beyond The Board' to create a premiere Music Docu-Series that takes enthusiasts into the minds of the industries most sought-after Songwriters, Producers, Musicians, and Stars in the production of a unique duo-inspired soundtrack starring the most prolific musical talents who have been paired to deliver a profound message on 'Everyman's' pursuit to seek a new point of departure regarding the 'brotherhood of mankind.'",
+      "THE NFOH ENCOUNTER - Being heard amid the roar of your competitor's voices is a daunting task in today's crowded marketplace. We find this to be shockingly true each time we read a magazine, watch the television, surf the web, and listen to music. The MTM SPOT is at the cornerstone of our brands mantra to establish 'Platforms of Becoming' to unveil the true power of industry and create sensory engagement musical encounters that ultimately culminates into empowerment experiences. We are Story Commanders who understand the Art of curating Brand Encounters based upon the beliefs, values, perspectives of the individuals present who then falls in love with where we hope irrespective of nationality, race, age and or gender. HearYE, HearYE, Be YE Transformed! 'People don't buy what you do; they buy why you do it.' - Andrew Esse",
     color: "purple",
   },
 
@@ -157,15 +157,15 @@ const constellationNodes = [
     color: "amber",
   },
 
-  // Node 14 - Host Hotel (Public) - upper left
+  // Node 14 - PRIVATE HIDEAWAY VILLAS (Public) - upper left
   {
     id: 14,
     x: 38,
     y: 23,
     type: "unlocked",
-    title: "Host Hotel",
+    title: "PRIVATE HIDEAWAY VILLAS",
     content:
-      "Every successful enterprise IS propelled by the vertical connections forged from the right invitations being sent to the right 'Creativists' who are equipped and coveted by their alignment to use their talents to evoke change within those who believe in where we hope. Our hosting philosophy centers on creating transformative encounters at premier venues including Geejam Hotel & Studios in Port Antonio, Jamaica (1.22.26-2.8.26), Marrakech Media Village in Morocco (3.5.26-3.24.26), and Humble Baron in Shelbyville, TN (6.3.26-6.4.26).",
+      "PRIVATE HIDEAWAY VILLAS - Every successful enterprise IS propelled by the vertical connections forged from the right invitations being sent to the right 'Creativists' who are equipped and coveted by their alignment to use their talents to evoke change within those who believe in where we hope.",
     color: "red",
   },
 
@@ -180,15 +180,15 @@ const constellationNodes = [
     color: "cyan",
   },
 
-  // Node 16 - Lune Lite (Public) - bottom of vertical line
+  // Node 16 - Domaine Zeina (Public) - bottom of vertical line
   {
     id: 16,
     x: 25,
     y: 80,
     type: "unlocked",
-    title: "Lune Lite",
+    title: "Domaine Zeina",
     content:
-      "In an 'Act of Formlessness' we believe, as Robin D.G. Kelly notes that, 'our utopia is not in things but rather in what we see in our imagination' and it is the universal language of music that IS the conduit to transport us from our present state. For those who believe in where we hope our exodus is not escape but rather a new beginning. This philosophy guides our approach to creating transformative musical experiences that transcend traditional boundaries.",
+      "DOMAINE ZEINA - Creating the soundtrack is rooted in our ability to establish a foundation where the constant quest for balance and duality in life is fulfilled. Artists will reside at the ultra-exclusive 15-hectare private pavillion enclave amidst olive groves with breaktaking views of the majestic Atlas Mountains",
     color: "emerald",
   },
 
@@ -229,7 +229,6 @@ const constellationNodes = [
 
 export default function ConstellationScene() {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const audioRef = useRef<HTMLAudioElement>(null)
   const [selectedNode, setSelectedNode] = useState<any>(null)
   const [videoReady, setVideoReady] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
@@ -268,34 +267,13 @@ export default function ConstellationScene() {
     }
   }, [])
 
-  // Background audio setup - only for constellation scene (last screen)
-  useEffect(() => {
-    const audio = audioRef.current
-    if (!audio) return
-
-    // Set up audio properties
-    audio.loop = true
-    audio.volume = 0.3
-    audio.preload = "metadata"
-
-    // Start playing when video is ready (only on constellation scene)
-    if (videoReady) {
-      audio.play().catch(console.warn)
-    }
-
-    // Cleanup audio when component unmounts
-    return () => {
-      if (audio) {
-        audio.pause()
-        audio.currentTime = 0
-      }
-    }
-  }, [videoReady])
+  // Handle modal close
+  const handleModalClose = () => {
+    setSelectedNode(null)
+  }
 
   return (
     <div className="relative w-full h-full overflow-hidden">
-      {/* Background audio */}
-      <audio ref={audioRef} src="/Audios/Planet Space.m4a" />
       
       {/* Background video */}
       <video
@@ -440,7 +418,12 @@ export default function ConstellationScene() {
       )}
 
       {/* Node Modal */}
-      {selectedNode && <NodeModal node={selectedNode} onClose={() => setSelectedNode(null)} />}
+      {selectedNode && (
+        <NodeModal 
+          node={selectedNode} 
+          onClose={handleModalClose}
+        />
+      )}
     </div>
   )
 }
