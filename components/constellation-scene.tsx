@@ -16,7 +16,7 @@ const constellationNodes = [
     type: "unlocked",
     title: "MEDERIC TURAY",
     content:
-      "MEDERIC TURAY - Our 'Iconic Advantage' lies in our ability to identify concrete unearthed possibilities illuminating the abstract concepts and ideations through the lens that breaks the constraints imposed by the major societal and cultural trends before us. MTM commissions Ivorian Born, and Morocco based artist Mederic Turay to curate 17 AI Digital Artwork Movie Posters of the Artists, Producers, & Songwriters at MMV Unreal Engine Studio. The MTM Art Collection demonstrates man's constant quest for balance and duality in life through music. The Artwork, steeped in rich West African roots and shot in Morocco at Marrakesh Media Village, will be featured at the Soundtrack Release at Humble Baron at Uncle Nearest Green's Humble Baron Venue in Shelbyville, TN.",
+      "Our 'Iconic Advantage' lies in our ability to identify concrete unearthed possibilities illuminating the abstract concepts and ideations through the lens that breaks the constraints imposed by the major societal and cultural trends before us. MTM commissions Ivorian Born, and Morocco based artist Mederic Turay to curate 17 AI Digital Artwork Movie Posters of the Artists, Producers, & Songwriters at MMV Unreal Engine Studio. The MTM Art Collection demonstrates man's constant quest for balance and duality in life through music. The Artwork, steeped in rich West African roots and shot in Morocco at Marrakesh Media Village, will be featured at the Soundtrack Release at Humble Baron at Uncle Nearest Green's Humble Baron Venue in Shelbyville, TN.",
     color: "cyan",
   },
 
@@ -39,7 +39,7 @@ const constellationNodes = [
     type: "unlocked",
     title: "THE NFOH ENCOUNTER",
     content:
-      "THE NFOH ENCOUNTER - Being heard amid the roar of your competitor's voices is a daunting task in today's crowded marketplace. We find this to be shockingly true each time we read a magazine, watch the television, surf the web, and listen to music. The MTM SPOT is at the cornerstone of our brands mantra to establish 'Platforms of Becoming' to unveil the true power of industry and create sensory engagement musical encounters that ultimately culminates into empowerment experiences. We are Story Commanders who understand the Art of curating Brand Encounters based upon the beliefs, values, perspectives of the individuals present who then falls in love with where we hope irrespective of nationality, race, age and or gender. HearYE, HearYE, Be YE Transformed! 'People don't buy what you do; they buy why you do it.' - Andrew Esse",
+      "Being heard amid the roar of your competitor's voices is a daunting task in today's crowded marketplace. We find this to be shockingly true each time we read a magazine, watch the television, surf the web, and listen to music. The MTM SPOT is at the cornerstone of our brands mantra to establish 'Platforms of Becoming' to unveil the true power of industry and create sensory engagement musical encounters that ultimately culminates into empowerment experiences. We are Story Commanders who understand the Art of curating Brand Encounters based upon the beliefs, values, perspectives of the individuals present who then falls in love with where we hope irrespective of nationality, race, age and or gender. HearYE, HearYE, Be YE Transformed! 'People don't buy what you do; they buy why you do it.' - Andrew Esse",
     color: "purple",
   },
 
@@ -119,7 +119,7 @@ const constellationNodes = [
     type: "unlocked",
     title: "Rixon Agency",
     content:
-      "At Rixon Agency, we know that every business has its own story—and we're here to help you tell it better. Whether you're launching a new product, building your online presence, or pitching to investors, we create digital experiences that actually move the needle. From websites and mobile apps to pitch decks and brand design, our team blends creativity with strategy to build things that work—and look good doing it. We care about your goals, and we treat your success like our own. That means honest communication, smart execution, and showing up with solutions that help you grow.",
+      "At Rixon Agency, we know that every business has its own story—and we're here to help you tell it better. We are proud to expand our reach in the US market with NFOH World. Our charge, whether you're launching a new product, building your online presence, or pitching to investors, is to create immersive digital experiences that actually move the needle. From websites and mobile apps to engagement decks and brand design, our team blends creativity with strategy to build things that work—and look good doing it. We care about your goals, and we treat your success like our own. That means honest communication, smart execution, and showing up with solutions that help you grow.",
     color: "yellow",
   },
 
@@ -153,7 +153,7 @@ const constellationNodes = [
     type: "unlocked",
     title: "Marrakesh",
     content:
-      "MARRAKECH MEDIA VILLAGE - Our second stop takes us to the ancient land of Morocco where artists engage in intensive writing, recording, and video sessions from March 5-24, 2026. The Marrakech experience features hot air balloon transport, AI digital artwork creation with Mederic Turay, and immersive cultural encounters that blend West African roots with contemporary music production. Artists work in 3 daily sessions (7AM-10AM, 10AM-2PM, 7PM-12AM) creating the soundtrack that demonstrates man's constant quest for balance and duality in life through music.",
+      "Our second stop takes us to the ancient land of Morocco where artists engage in intensive writing, recording, and video sessions from March 5-24, 2026. The Marrakech experience features hot air balloon transport, AI digital artwork creation with Mederic Turay, and immersive cultural encounters that blend West African roots with contemporary music production. Artists work in 3 daily sessions (7AM-10AM, 10AM-2PM, 7PM-12AM) creating the soundtrack that demonstrates man's constant quest for balance and duality in life through music.",
     color: "amber",
   },
 
@@ -165,7 +165,7 @@ const constellationNodes = [
     type: "unlocked",
     title: "PRIVATE HIDEAWAY VILLAS",
     content:
-      "PRIVATE HIDEAWAY VILLAS - Every successful enterprise IS propelled by the vertical connections forged from the right invitations being sent to the right 'Creativists' who are equipped and coveted by their alignment to use their talents to evoke change within those who believe in where we hope.",
+      "Every successful enterprise IS propelled by the vertical connections forged from the right invitations being sent to the right 'Creativists' who are equipped and coveted by their alignment to use their talents to evoke change within those who believe in where we hope.",
     color: "red",
   },
 
@@ -188,7 +188,7 @@ const constellationNodes = [
     type: "unlocked",
     title: "Domaine Zeina",
     content:
-      "DOMAINE ZEINA - Creating the soundtrack is rooted in our ability to establish a foundation where the constant quest for balance and duality in life is fulfilled. Artists will reside at the ultra-exclusive 15-hectare private pavillion enclave amidst olive groves with breaktaking views of the majestic Atlas Mountains",
+      "Creating the soundtrack is rooted in our ability to establish a foundation where the constant quest for balance and duality in life is fulfilled. Artists will reside at the ultra-exclusive 15-hectare private pavillion enclave amidst olive groves with breaktaking views of the majestic Atlas Mountains",
     color: "emerald",
   },
 
@@ -211,7 +211,7 @@ const constellationNodes = [
     type: "unlocked",
     title: "Humble Barn",
     content:
-      "HUMBLE BARON - The final destination in Shelbyville, TN represents the culmination of our musical journey (6.3.26-6.4.26). This is where the soundtrack release takes place, featuring network streaming dates from May 24-31, 2026. The venue accommodates a Presidential Suite, 16 One Bedroom Suites, 16 Executive Suites, 27 Superior Rooms, and 5 Upper Rooms, providing the perfect setting for the grand finale of our three-stop musical odyssey. Load-in begins Day 1 (6.3.26) with the main event on Day 2 (6.4.26).",
+      "The final destination in Shelbyville, TN represents the culmination of our musical journey (6.3.26-6.4.26). This is where the soundtrack release takes place, featuring network streaming dates from May 24-31, 2026. The venue accommodates a Presidential Suite, 16 One Bedroom Suites, 16 Executive Suites, 27 Superior Rooms, and 5 Upper Rooms, providing the perfect setting for the grand finale of our three-stop musical odyssey. Load-in begins Day 1 (6.3.26) with the main event on Day 2 (6.4.26).",
     color: "blue",
   },
 
