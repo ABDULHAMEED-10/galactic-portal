@@ -27,7 +27,8 @@ const constellationNodes = [
     y: 88,
     type: "locked",
     partner: "Verizon",
-    tier: "Technology Partner",
+    tier: "Title Partner",
+    investment: "$97,705.49",
     color: "emerald",
   },
 
@@ -50,7 +51,8 @@ const constellationNodes = [
     y: 48,
     type: "locked",
     partner: "Gibson Guitars",
-    tier: "Instrument Partner",
+    tier: "Producing Partner",
+    investment: "$43,745.49",
     color: "amber",
   },
 
@@ -61,7 +63,8 @@ const constellationNodes = [
     y: 52,
     type: "locked",
     partner: "Glory Foods",
-    tier: "Lifestyle Partner",
+    tier: "Producing Partner",
+    investment: "$53,960.00",
     color: "orange",
   },
 
@@ -77,14 +80,15 @@ const constellationNodes = [
     color: "red",
   },
 
-  // Node 7 - Honda (Locked) - right of center
+  // Node 7 - Range Rover (Locked) - right of center
   {
     id: 7,
     x: 68,
     y: 45,
     type: "locked",
-    partner: "Honda",
-    tier: "Mobility Partner",
+    partner: "Range Rover",
+    tier: "Presenting Partner",
+    investment: "$72,482.22",
     color: "pink",
   },
 
@@ -95,7 +99,8 @@ const constellationNodes = [
     y: 55,
     type: "locked",
     partner: "Pandora",
-    tier: "Streaming Partner",
+    tier: "Presenting Partner",
+    investment: "$72,482.22",
     color: "slate",
   },
 
@@ -130,7 +135,8 @@ const constellationNodes = [
     y: 70,
     type: "locked",
     partner: "Ebony",
-    tier: "Platinum Partner",
+    tier: "Presenting Partner",
+    investment: "$72,482.22",
     color: "stone",
   },
 
@@ -141,7 +147,8 @@ const constellationNodes = [
     y: 75,
     type: "locked",
     partner: "TOTE & CARRY",
-    tier: "Merchandise Partner",
+    tier: "Presenting Partner",
+    investment: "$72,482.22",
     color: "rose",
   },
 
@@ -153,7 +160,7 @@ const constellationNodes = [
     type: "unlocked",
     title: "Marrakesh",
     content:
-      "Our second stop takes us to the ancient land of Morocco where artists engage in intensive writing, recording, and video sessions from March 5-24, 2026. The Marrakech experience features hot air balloon transport, AI digital artwork creation with Mederic Turay, and immersive cultural encounters that blend West African roots with contemporary music production. Artists work in 3 daily sessions (7AM-10AM, 10AM-2PM, 7PM-12AM) creating the soundtrack that demonstrates man's constant quest for balance and duality in life through music.",
+      "Songwriters, Producers, Musicians, Singers, and Talent convene in Marrakesh, Morocco at the sprawling complex where they will engage in intensive writing, recording, and video sessions March 8-27, 2026. The Marrakech Music Experience features cutting-edge State-Of-The-Art Recording Studio, Green Screen Studio, and luxurious 5-Star Accommodations.",
     color: "amber",
   },
 
@@ -176,7 +183,8 @@ const constellationNodes = [
     y: 12, // Changed from 16 to 12 (moved up)
     type: "locked",
     partner: "Phillips",
-    tier: "Audio Technology Partner",
+    tier: "Presenting Partner",
+    investment: "$53,960.00",
     color: "cyan",
   },
 
@@ -199,7 +207,8 @@ const constellationNodes = [
     y: 65,
     type: "locked",
     partner: "Travel Noir",
-    tier: "Experience Partner",
+    tier: "Naming Rights Partner",
+    investment: "$150,000.00",
     color: "yellow",
   },
 
@@ -211,7 +220,7 @@ const constellationNodes = [
     type: "unlocked",
     title: "Humble Barn",
     content:
-      "The final destination in Shelbyville, TN represents the culmination of our musical journey (6.3.26-6.4.26). This is where the soundtrack release takes place, featuring network streaming dates from May 24-31, 2026. The venue accommodates a Presidential Suite, 16 One Bedroom Suites, 16 Executive Suites, 27 Superior Rooms, and 5 Upper Rooms, providing the perfect setting for the grand finale of our three-stop musical odyssey. Load-in begins Day 1 (6.3.26) with the main event on Day 2 (6.4.26).",
+      "The final destination for MTM is at the expansive 300 Acre Uncle Nearest Green Distillery located in Shelbyville, TN. The Humble Baron, heralded as the largest bar in the world, is the perfect setting for the grand finale of the LIVE Listening Party Soundtrack Release featuring 16 of the world's most prolific artists across every musical genre.",
     color: "blue",
   },
 
@@ -222,7 +231,8 @@ const constellationNodes = [
     y: 38,
     type: "locked",
     partner: "UBIGI",
-    tier: "Connectivity Partner",
+    tier: "Producing Partner",
+    investment: "$43,745.49",
     color: "blue",
   },
 ]
