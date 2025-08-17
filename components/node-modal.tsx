@@ -643,11 +643,10 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
                     </div>
                   )}
 
-                  {/* For NFOH node, display image and text with improved layout */}
+                  {/* For NFOH node, display image above and paragraphs in row below */}
                   {node.title === "THE NFOH ENCOUNTER" && (
-                    <div
-                      className={`mb-6 ${isMobile ? "space-y-4" : "grid grid-cols-1 lg:grid-cols-2 gap-6 items-start"}`}
-                    >
+                    <div className="mb-6 space-y-6">
+                      {/* Image at the top - full width */}
                       <div className="relative">
                         <img
                           src="/images/NFOH.jpeg"
@@ -656,24 +655,39 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg" />
                       </div>
-                      <div className="space-y-4">
+                      
+                      {/* Two paragraphs in a row below the image */}
+                      <div className={`${isMobile ? "space-y-4" : "grid grid-cols-2 gap-6"}`}>
+                        {/* First paragraph - NFOH content */}
                         <div className="bg-purple-400/10 border border-purple-400/30 rounded-lg p-4">
                           <h3 className={`text-purple-400 font-semibold mb-2 ${isMobile ? "text-sm" : "text-base"}`}>
                             THE NFOH ENCOUNTER
                           </h3>
                           <p className={`text-white/90 ${isMobile ? "text-xs" : "text-sm"} leading-relaxed`}>
-                            {node.content}
+                            {node.content.split('\n\n\n\nTHE MTM SPOT')[0]}
                           </p>
                         </div>
-                        <div className="grid grid-cols-2 gap-3 text-center">
-                          <div className="bg-white/5 rounded-lg p-3">
-                            <div className={`text-purple-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>Story</div>
-                            <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>Commanders</div>
-                          </div>
-                          <div className="bg-white/5 rounded-lg p-3">
-                            <div className={`text-purple-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>Platforms</div>
-                            <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>of Becoming</div>
-                          </div>
+                        
+                        {/* Second paragraph - THE MTM SPOT content */}
+                        <div className="bg-orange-400/10 border border-orange-400/30 rounded-lg p-4">
+                          <h3 className={`text-orange-400 font-semibold mb-2 ${isMobile ? "text-sm" : "text-base"}`}>
+                            THE MTM SPOT
+                          </h3>
+                          <p className={`text-white/90 ${isMobile ? "text-xs" : "text-sm"} leading-relaxed`}>
+                            {node.content.split('\n\n\n\nTHE MTM SPOT')[1]}
+                          </p>
+                        </div>
+                      </div>
+                      
+                      {/* Stats grid below paragraphs */}
+                      <div className="grid grid-cols-2 gap-3 text-center">
+                        <div className="bg-white/5 rounded-lg p-3">
+                          <div className={`text-purple-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>Story</div>
+                          <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>Commanders</div>
+                        </div>
+                        <div className="bg-white/5 rounded-lg p-3">
+                          <div className={`text-purple-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>Platforms</div>
+                          <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>of Becoming</div>
                         </div>
                       </div>
                     </div>
