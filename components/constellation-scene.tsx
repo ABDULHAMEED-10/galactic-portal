@@ -16,7 +16,7 @@ const constellationNodes = [
     type: "unlocked",
     title: "MEDERIC TURAY",
     content:
-      "Our 'Iconic Advantage' lies in our ability to identify concrete unearthed possibilities illuminating the abstract concepts and ideations through the lens that breaks the constraints imposed by the major societal and cultural trends before us. MTM commissions Ivorian Born, and Morocco based artist Mederic Turay to curate 17 AI Digital Artwork Movie Posters of the Artists, Producers, & Songwriters at MMV Unreal Engine Studio. The MTM Art Collection demonstrates man's constant quest for balance and duality in life through music. The Artwork, steeped in rich West African roots and shot in Morocco at Marrakesh Media Village, will be featured at the Soundtrack Release at Humble Baron at Uncle Nearest Green's Humble Baron Venue in Shelbyville, TN.",
+      "Our 'Iconic Advantage' lies in our ability to identify concrete unearthed possibilities illuminating the abstract concepts and ideations through the lens that breaks the constraints imposed by the major societal and cultural trends before us.\n\nMTM commissions Ivorian Born, and Morocco based artist Mederic Turay to curate a Digital Artwork Collection of the Artists, Producers, & Songwriters at MMV Unreal Engine Studio.\n\nThe MTM Art Collection demonstrates man's constant quest for balance and duality in life through music. The Artwork, steeped in rich West African roots and shot in Morocco at Marrakesh Media Village, will be featured at the Soundtrack Release at Humble Baron at Uncle Nearest Green's Humble Baron Venue in Shelbyville, TN.",
     color: "cyan",
   },
 
@@ -29,6 +29,7 @@ const constellationNodes = [
     partner: "Verizon",
     tier: "Title Partner",
     investment: "$97,705.49",
+    content: "Verizon insignia under the Title Partner inside Souvenir Video Books",
     color: "emerald",
   },
 
@@ -40,7 +41,7 @@ const constellationNodes = [
     type: "unlocked",
     title: "THE NFOH ENCOUNTER",
     content:
-      "Being heard amid the roar of your competitor's voices is a daunting task in today's crowded marketplace. We find this to be shockingly true each time we read a magazine, watch the television, surf the web, and listen to music. The MTM SPOT is at the cornerstone of our brands mantra to establish 'Platforms of Becoming' to unveil the true power of industry and create sensory engagement musical encounters that ultimately culminates into empowerment experiences. We are Story Commanders who understand the Art of curating Brand Encounters based upon the beliefs, values, perspectives of the individuals present who then falls in love with where we hope irrespective of nationality, race, age and or gender. HearYE, HearYE, Be YE Transformed! 'People don't buy what you do; they buy why you do it.' - Andrew Esse\n\n\n\nTHE MTM SPOT MTM is an Exclusive Music Encounter captured in 2 epic locations departing from the ancient sands of Morocco and landing on the expansive plains of Shelbyville, TN.\n\nEach stop goes \"Beyond The Board\" to create a premiere Music Docu-Series that takes enthusiasts into the minds of the industries most sought-after Songwriters, Producers, Musicians, and Stars in the production of a unique duo-inspired soundtrack starring the most prolific musical talents who have been paired to deliver a profound message on \"Everyman's\" pursuit to seek a new point of departure regarding the \"Brotherhood Of Mankind.\"",
+      "Being heard amid the roar of your competitor's voices is a daunting task in today's crowded marketplace. We find this to be shockingly true each time we read a magazine, watch the television, surf the web, and listen to music.\n\nThe mantra of our brand is to establish 'Platforms of Becoming' to unveil the true power of industry and create sensory engagement musical encounters that ultimately culminates into empowerment experiences.\n\nWe are Story Commanders who understand the Art of curating Brand Encounters based upon the beliefs, values, perspectives of the individuals present who then falls in love with where we hope irrespective of nationality, race, age and or gender.\n\nHearYE, HearYE, Be YE Transformed!\n\n'People don't buy what you do; they buy why you do it.' - Andrew Esse\n\nMTM is an Exclusive Music Encounter captured in 2 epic locations departing from the ancient sands of Morocco and landing on the expansive plains of Shelbyville, TN.\n\nEach stop goes \"Beyond The Board\" to create a premiere Music Docu-Series that takes enthusiasts into the minds of the industries most sought-after Songwriters, Producers, Musicians, and Stars in the production of a unique duo-inspired soundtrack starring the most prolific musical talents who have been paired to deliver a profound message on \"Everyman's\" pursuit to seek a new point of departure regarding the \"Brotherhood Of Mankind.\"",
     color: "purple",
   },
 
@@ -53,6 +54,7 @@ const constellationNodes = [
     partner: "Gibson Guitars",
     tier: "Producing Partner",
     investment: "$43,745.49",
+    content: "Gibson Guitars insignia under Producing Partner in Souvenir Video Books",
     color: "amber",
   },
 
@@ -65,6 +67,7 @@ const constellationNodes = [
     partner: "Glory Foods",
     tier: "Producing Partner",
     investment: "$53,960.00",
+    content: "Glory Foods insignia under Producing Partner in Souvenir Video Books",
     color: "orange",
   },
 
@@ -76,7 +79,7 @@ const constellationNodes = [
     type: "unlocked",
     title: "AIX",
     content:
-      "At AIXchange, we believe that every business has unique needs, and we strive to provide customized, AI-powered solutions that align with our clients' investment objectives. Our team of experienced consultants works closely with clients to develop and implement strategies that drive growth and success. We are committed to excellence, innovation, and customer satisfaction, and we go the extra mile to deliver the best possible results for our clients.",
+      "At AIXchange, we believe that every business has unique needs, and we strive to provide customized, AI-powered solutions that align with our clients' investment objectives.\n\nOur team of experienced consultants is charged to work with NFOH World to develop and implement a financial strategy that drives growth and success.\n\nWe are committed to excellence, innovation, and customer satisfaction, and we look forward to going the extra mile to deliver the best possible results.",
     color: "red",
   },
 
@@ -89,6 +92,7 @@ const constellationNodes = [
     partner: "Range Rover",
     tier: "Presenting Partner",
     investment: "$72,482.22",
+    content: "Range Rover insignia under Presenting Partner in inside Souvenir Video Books",
     color: "pink",
   },
 
@@ -101,6 +105,7 @@ const constellationNodes = [
     partner: "Pandora",
     tier: "Presenting Partner",
     investment: "$72,482.22",
+    content: "Pandora insignia under the Presenting Partner inside Souvenir Video Books",
     color: "slate",
   },
 
@@ -112,7 +117,7 @@ const constellationNodes = [
     type: "unlocked",
     title: "MMV",
     content:
-      "Our 'Iconic Advantage' lies in our ability to identify concrete unearthed possibilities illuminating the abstract concepts and ideations through the lens that breaks the constraints imposed by the major societal and cultural trends before us. MTM commissions Ivorian Born, and Morocco based artist Mederic Turay to curate 19 AI Digital Artwork Movie Posters of the Artists, Producers, & Songwriters at MMV Unreal Engine Studio. The MTM Art Collection demonstrates man's constant quest for balance and duality in life through music. The Artwork, steeped in rich West African roots, will be featured at the Soundtrack Release at Humble Baron at Uncle Nearest Venue in Shelbyville, TN.",
+      "MMV is a film creator's dream!\n\nMMV features numerous indoor/outdoor green screens, large indoor studios, amazing surroundings, and its natural spectacular scenery. We offer all of the essential equipment for top level motion picture and music video productions at your disposal.\n\nWhile the Imagineers & Creativist work on campus they will be comforted in luxury and enjoy one of our 14 fully equipped and spacious suites, arranged around gorgeous swimming pools and complemented by sunbathing spaces, Moroccan Kabyle-style tents for tea and discussions, fully staffed bars and dining areas, and a full gym.\n\nMMV is proud to align with NFOH in the recording of the Soundtrack for Samson: Blood Oath and promises 17 days of leisure and relaxation, Moroccan cuisine, mint tea, and sunsets to unwind under the beautiful Moroccan skies.",
     color: "lime",
   },
 
@@ -124,33 +129,35 @@ const constellationNodes = [
     type: "unlocked",
     title: "Rixon Agency",
     content:
-      "At Rixon Agency, we know that every business has its own story—and we're here to help you tell it better. We are proud to expand our reach in the US market with NFOH World. Our charge, whether you're launching a new product, building your online presence, or pitching to investors, is to create immersive digital experiences that actually move the needle. From websites and mobile apps to engagement decks and brand design, our team blends creativity with strategy to build things that work—and look good doing it. We care about your goals, and we treat your success like our own. That means honest communication, smart execution, and showing up with solutions that help you grow.",
+      "At Rixon Agency, we know that every business has its own story—and we're here to help you tell it better. We are proud to expand our reach in the US market with NFOH World.\n\nOur charge, whether you're launching a new product, building your online presence, or pitching to investors, is to create immersive digital experiences that actually move the needle.\n\nFrom websites and mobile apps to engagement decks and brand design, our team blends creativity with strategy to build things that work—and look good doing it.\n\nWe care about your goals, and we treat your success like our own. That means honest communication, smart execution, and showing up with solutions that help you grow.",
     color: "yellow",
   },
 
-  // Node 11 - Ebony (Locked) - right side, bottom
-  {
-    id: 11,
-    x: 75,
-    y: 70,
-    type: "locked",
-    partner: "Ebony",
-    tier: "Presenting Partner",
-    investment: "$72,482.22",
-    color: "stone",
-  },
+      // Node 11 - Ebony (Locked) - right side, bottom
+    {
+      id: 11,
+      x: 75,
+      y: 70,
+      type: "locked",
+      partner: "Ebony",
+      tier: "Presenting Partner",
+      investment: "$72,482.22",
+      content: "Ebony Magazine insignia under the Presenting Partner inside Souvenir Video Books",
+      color: "stone",
+    },
 
-  // Node 12 - TOTE & CARRY (Locked) - lower left
-  {
-    id: 12,
-    x: 38,
-    y: 75,
-    type: "locked",
-    partner: "TOTE & CARRY",
-    tier: "Presenting Partner",
-    investment: "$72,482.22",
-    color: "rose",
-  },
+      // Node 12 - TOTE & CARRY (Locked) - lower left
+    {
+      id: 12,
+      x: 38,
+      y: 75,
+      type: "locked",
+      partner: "TOTE & CARRY",
+      tier: "Presenting Partner",
+      investment: "$72,482.22",
+      content: "Tote & Carry insignia under the Presenting Partner inside Souvenir Video Books",
+      color: "rose",
+    },
 
   // Node 13 - Marrakesh (Public) - top center
   {
@@ -160,7 +167,7 @@ const constellationNodes = [
     type: "unlocked",
     title: "Marrakesh",
     content:
-      "Songwriters, Producers, Musicians, Singers, and Talent convene in Marrakesh, Morocco at the sprawling complex where they will engage in intensive writing, recording, and video sessions March 8-27, 2026. The Marrakech Music Experience features cutting-edge State-Of-The-Art Recording Studio, Green Screen Studio, and luxurious 5-Star Accommodations.",
+      "From the contemporary design of our three audio recording studios equipped with cutting-edge technology, equipment, and services, including soundproof \"room within a room\" systems, to the incorporation of researched sound isolation techniques with calibrated Dynaudio, Genelec, Focus sound systems, near to far field ranges, a large selection of professional microphones and instruments, and even a 7.1 audio system set-up makes us the perfect choice for any and all forms of audio recording and mixing, whether for music, film sound post-production.\n\nSongwriters, Producers, Musicians, Singers, and Talent convene in Marrakesh, Morocco at the sprawling complex where they will engage in intensive writing, recording, and video sessions March 8-27, 2026.\n\nThe Marrakech Music Experience features cutting-edge State-Of-The-Art Recording Studio, Green Screen Studio, and luxurious 5-Star Accommodations.",
     color: "amber",
   },
 
@@ -172,21 +179,22 @@ const constellationNodes = [
     type: "unlocked",
     title: "PRIVATE HIDEAWAY VILLAS",
     content:
-      "Every successful enterprise IS propelled by the vertical connections forged from the right invitations being sent to the right 'Creativists' who are equipped and coveted by their alignment to use their talents to evoke change within those who believe in where we hope.",
+      "Every successful enterprise IS propelled by the vertical connections forged from the right invitations being sent to the right 'Creativists' who are equipped and coveted by their alignment to use their talents to evoke change within those who believe in where we hope.\n\nThe foundations of Private Hideaway Villas is built on a wealth of solid travel experience and passion.\n\nThe company, led by Directors with a heart felt love of luxury travel and 45 years of experience in the industry, is at the cornerstone of the MTM Music Encounter in Morocco.\n\nFrom Making the Music to Lounging Under the Moroccan Sun Private Hideaway Villas offers a range of 5-Star services customized to Meet The Impossible!",
     color: "red",
   },
 
-  // Node 15 - Phillips (Locked) - moved up and right
-  {
-    id: 15,
-    x: 42, // Changed from 37 to 42 (moved right)
-    y: 12, // Changed from 16 to 12 (moved up)
-    type: "locked",
-    partner: "Phillips",
-    tier: "Presenting Partner",
-    investment: "$53,960.00",
-    color: "cyan",
-  },
+      // Node 15 - Phillips (Locked) - moved up and right
+    {
+      id: 15,
+      x: 42, // Changed from 37 to 42 (moved right)
+      y: 12, // Changed from 16 to 12 (moved up)
+      type: "locked",
+      partner: "Phillips",
+      tier: "Supporting Rights Partner",
+      investment: "$53,960.00",
+      content: "Phillips insignia under the Supporting Rights Partner inside Souvenir Video Books",
+      color: "cyan",
+    },
 
   // Node 16 - Domaine Zeina (Public) - bottom of vertical line
   {
@@ -209,6 +217,7 @@ const constellationNodes = [
     partner: "Travel Noir",
     tier: "Naming Rights Partner",
     investment: "$150,000.00",
+    content: "Travel Noir insignia under the Naming Rights Partner inside Souvenir Video Books",
     color: "yellow",
   },
 
@@ -220,7 +229,7 @@ const constellationNodes = [
     type: "unlocked",
     title: "Humble Barn",
     content:
-      "The final destination for MTM is at the expansive 300 Acre Uncle Nearest Green Distillery located in Shelbyville, TN. The Humble Baron, heralded as the largest bar in the world, is the perfect setting for the grand finale of the LIVE Listening Party Soundtrack Release featuring 16 of the world's most prolific artists across every musical genre.",
+      "The final destination for MTM is at the expansive Uncle Nearest Green Distillery located in Shelbyville, TN.\n\nThe Humble Baron, heralded as the largest bar in the world, is the perfect setting for the grand finale of the LIVE Listening Party Soundtrack Release featuring 16 of the world's most prolific artists across every musical genre.",
     color: "blue",
   },
 
@@ -233,6 +242,7 @@ const constellationNodes = [
     partner: "UBIGI",
     tier: "Producing Partner",
     investment: "$43,745.49",
+    content: "Enter your Partner Access Code and \"Embrace The Noise\"",
     color: "blue",
   },
 ]

@@ -76,6 +76,7 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
     "Gibson Guitars": "RKvNdc-M_30",
     Verizon: "acy8jlXUMFM",
     "MEDERIC TURAY": "medric", // Mederic Turay video
+    "Humble Barn": "d9_zVJGk4vg", // Humble Baron video
   }
 
   const partnerPerks: { [key: string]: string[] } = {
@@ -449,7 +450,7 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
                       </h4>
                     </div>
                     <p className={`text-white/70 ${isMobile ? "text-xs" : "text-sm"}`}>
-                      {isAuthenticated && node.investment ? `${node.tier} - ${node.investment}` : `${node.tier} - Premium partnership with exclusive benefits and ROI opportunities.`}
+                      {isAuthenticated && node.investment ? `${node.tier} - ${node.investment}` : node.content || `${node.tier} - Enter your Partner Access Code and "Embrace The Noise"`}
                     </p>
                   </div>
                   <div className="bg-white/5 rounded-lg p-3 sm:p-4">
@@ -589,20 +590,7 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
                             {node.content}
                           </p>
                         </div>
-                        <div className="grid grid-cols-2 gap-3 text-center">
-                          <div className="bg-white/5 rounded-lg p-3">
-                            <div className={`text-amber-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>
-                              Mar 5-24
-                            </div>
-                            <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>2026</div>
-                          </div>
-                          <div className="bg-white/5 rounded-lg p-3">
-                            <div className={`text-amber-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>
-                              3 Sessions
-                            </div>
-                            <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>Daily</div>
-                          </div>
-                        </div>
+
                       </div>
                     </div>
                   )}
@@ -629,16 +617,7 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
                             {node.content}
                           </p>
                         </div>
-                        <div className="grid grid-cols-2 gap-3 text-center">
-                          <div className="bg-white/5 rounded-lg p-3">
-                            <div className={`text-lime-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>19</div>
-                            <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>AI Artworks</div>
-                          </div>
-                          <div className="bg-white/5 rounded-lg p-3">
-                            <div className={`text-lime-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>Mederic</div>
-                            <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>Turay</div>
-                          </div>
-                        </div>
+
                       </div>
                     </div>
                   )}
@@ -679,17 +658,7 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
                         </div>
                       </div>
                       
-                      {/* Stats grid below paragraphs */}
-                      <div className="grid grid-cols-2 gap-3 text-center">
-                        <div className="bg-white/5 rounded-lg p-3">
-                          <div className={`text-purple-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>Story</div>
-                          <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>Commanders</div>
-                        </div>
-                        <div className="bg-white/5 rounded-lg p-3">
-                          <div className={`text-purple-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>Platforms</div>
-                          <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>of Becoming</div>
-                        </div>
-                      </div>
+
                     </div>
                   )}
 
@@ -715,16 +684,7 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
                             {node.content}
                           </p>
                         </div>
-                        <div className="grid grid-cols-2 gap-3 text-center">
-                          <div className="bg-white/5 rounded-lg p-3">
-                            <div className={`text-emerald-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>15</div>
-                            <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>Hectares</div>
-                          </div>
-                          <div className="bg-white/5 rounded-lg p-3">
-                            <div className={`text-emerald-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>Atlas</div>
-                            <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>Mountains</div>
-                          </div>
-                        </div>
+
                       </div>
                     </div>
                   )}
@@ -751,16 +711,7 @@ export default function NodeModal({ node, onClose }: NodeModalProps) {
                             {node.content}
                           </p>
                         </div>
-                        <div className="grid grid-cols-2 gap-3 text-center">
-                          <div className="bg-white/5 rounded-lg p-3">
-                            <div className={`text-blue-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>300</div>
-                            <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>Acres</div>
-                          </div>
-                          <div className="bg-white/5 rounded-lg p-3">
-                            <div className={`text-blue-400 font-bold ${isMobile ? "text-lg" : "text-xl"}`}>16</div>
-                            <div className={`text-white/60 ${isMobile ? "text-xs" : "text-sm"}`}>Artists</div>
-                          </div>
-                        </div>
+
                       </div>
                     </div>
                   )}
